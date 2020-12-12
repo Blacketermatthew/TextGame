@@ -26,9 +26,9 @@ gorgo.set_weakness("flaming sword")
 ballroom.set_character(gorgo)
 
 current_room = kitchen
-game = True
+dead = False
 
-while game == True:
+while dead == False:
         print("\n")
         current_room.get_details()
 
@@ -42,21 +42,39 @@ while game == True:
 
         elif command == "talk":
                 if inhabitant is not None:
-                        talk_prompt = input("What would you like to say?: ")
-                        print("[You say: " + talk_prompt + "]")
+                        inhabitant.previously_encountered = True
+                        talk_prompt = input("What would you like to say? : ")
+                        print("\n[You say: " + talk_prompt + "]")
+                        print("[" + inhabitant.name + " says]: " + inhabitant.conversation)
                 elif inhabitant is None:
                          print("There is nobody here to talk to.")
 
         elif command == "fight":
-                if inhabitant is not None:
-                        fight_with = input("What will you fight with?: ")
+                if inhabitant is not None and isinstance(inhabitant, Enemy):
+                        fight_with = input("What will you fight with? : ")
                         fight_outcome = inhabitant.fight(fight_with)
                         if fight_outcome == True:
                                 current_room.set_character(None)
                         elif fight_outcome == False:
                                 print("You have been defeated.  GAME OVER")
-                                game = False
+                                dead = True
+                elif inhabitant is not None and isinstance(inhabitant, Character):
+                        print("You should not fight someone who isn't your enemy!")
                 elif inhabitant is None:
                         print("There is nobody here to fight.")
+                else:
+                        print("You are currently unable to fight anybody.")
                        
+        elif command == "identify":
+                if inhabitant is not None:
+                        inhabitant.identify()
+                elif inhabitant is None:
+                        print("There is nobody here to identify.")
+
+        elif command == "insult":
+                if inhabitant is not None:
+                        inhabitant.insult()
+                elif inhabitant is None:
+                        print("There is nobody here to insult.")
+
 

@@ -3,7 +3,7 @@ from item import Item
 from character import Character, Enemy
 from rpginfo import RPGInfo
 
-#### ------- TO DO LIST -------------- ####
+## ------- TO DO LIST -------------- ##
 """
 - Create items.  
 - Create figure out how to add items to rooms
@@ -17,24 +17,32 @@ from rpginfo import RPGInfo
  
  
 """
-#### --------------------------------- ####
+## --------------------------------- ##
 
-main_game = RPGInfo("Untitled Game")
-main_game.welcome()
 
+
+### Room Creation ###
 kitchen = Room("Kitchen")
 kitchen.set_description("Your standard kitchen.  It's smaller than you'd like.")
-
-ballroom = Room("Ballroom")
-ballroom.set_description("Despite the name, there are very few balls present.  Light orange marble covers the circular floor, with white pillars standing along the outer edge.")
 
 dining_hall = Room("Dining hall")
 dining_hall.set_description("Where we go to eat.  A long, wooden table centers the room.")
 
-kitchen.link_room(dining_hall, "south")
+dining_hall_to_ballroom_hallway = Room("Hallway")
+dining_hall_to_ballroom_hallway.set_description("A long, narrow hallway.  There is a small table near the entrance to the other room.")
+
+ballroom = Room("Ballroom")
+ballroom.set_description("Despite the name, there are very few balls present.  Light orange marble covers the circular floor, with white pillars standing along the outer edge.")
+
+
+### Mapping out the rooms. ###
+### link_room() connects one room to another room in the direction of wherever the parameter room is.  Room must first be declared as a Room() object
+kitchen.link_room(dining_hall, "south") # Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
 dining_hall.link_room(kitchen, "north")
-dining_hall.link_room(ballroom, "east")
-ballroom.link_room(dining_hall, "west")
+dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
+dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
+dining_hall_to_ballroom_hallway.link_room(ballroom, "west")
+ballroom.link_room(dining_hall_to_ballroom_hallway, "west")
 
 dave = Enemy("Dave", "A smelly zombie")
 dave.set_conversation("Brrlgrh... rgrhl... brains...")
@@ -47,6 +55,10 @@ ballroom.set_character(gorgo)
 
 current_room = kitchen
 dead = False
+
+
+main_game = RPGInfo("Untitled Game")
+main_game.welcome()
 
 while dead == False:
         print("\n")

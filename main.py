@@ -1,6 +1,26 @@
 from room import Room
 from item import Item
 from character import Character, Enemy
+from rpginfo import RPGInfo
+
+#### ------- TO DO LIST -------------- ####
+"""
+- Create items.  
+- Create figure out how to add items to rooms
+- Create an inventory or backpack system
+- Create stats for characters and items
+- Maybe? Have identify distinguish between characters and items 
+        (i.e. "identify stranger" vs "identify sword")
+- Have stats work almost like skill rolls when trying to identify, fight, etc
+- Maybe? Allow for clothing and armor
+-
+ 
+ 
+"""
+#### --------------------------------- ####
+
+main_game = RPGInfo("Untitled Game")
+main_game.welcome()
 
 kitchen = Room("Kitchen")
 kitchen.set_description("Your standard kitchen.  It's smaller than you'd like.")
@@ -76,5 +96,4 @@ while dead == False:
                         inhabitant.insult()
                 elif inhabitant is None:
                         print("There is nobody here to insult.")
-
 

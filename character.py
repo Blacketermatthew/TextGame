@@ -40,7 +40,7 @@ class Character():
             5: "Okay I'm actually starting to get upset.",
             6: "DUDE."
             }
-        print("[You insult " + self.name + "]")
+        print("\n[You insult " + self.name + "]")
         print("[" + self.name + " says]: " + insult_responses[randint(0,6)])
     
     # Fight with this character:

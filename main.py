@@ -35,15 +35,17 @@ ballroom = Room("Ballroom")
 ballroom.set_description("Despite the name, there are very few balls present.  Light orange marble covers the circular floor, with white pillars standing along the outer edge.")
 
 
-### Mapping out the rooms. ###
-### link_room() connects one room to another room in the direction of wherever the parameter room is.  Room must first be declared as a Room() object
-kitchen.link_room(dining_hall, "south") # Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
+### Mapping Out the Rooms. ###
+## link_room() connects one room to another room in the direction of wherever the parameter room is.  Room must first be declared as a Room() object
+kitchen.link_room(dining_hall, "south") ## Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
 dining_hall.link_room(kitchen, "north")
 dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
 dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
 dining_hall_to_ballroom_hallway.link_room(ballroom, "west")
 ballroom.link_room(dining_hall_to_ballroom_hallway, "west")
 
+
+### Creating the Characters and Enemies ###
 dave = Enemy("Dave", "A smelly zombie")
 dave.set_conversation("Brrlgrh... rgrhl... brains...")
 dave.set_weakness("cheese")
@@ -53,12 +55,13 @@ gorgo = Enemy("Gorgo", "A bulbous, gurgling bipedal creature with six bony arms.
 gorgo.set_weakness("flaming sword")
 ballroom.set_character(gorgo)
 
-current_room = kitchen
-dead = False
 
+### Game Setup ###
+current_room = kitchen  ## Where you start off.
+dead = False  ## Gets turned True once you die
 
-main_game = RPGInfo("Untitled Game")
-main_game.welcome()
+main_game = RPGInfo("Untitled Game")  ## Creates an instance of the title screen
+main_game.welcome()  
 
 while dead == False:
         print("\n")
@@ -72,11 +75,14 @@ while dead == False:
         if command in ["north", "south", "east", "west"]:
                 current_room = current_room.move(command)
 
-        elif command == "talk":
+        elif command == "talk" or command == "greet":
                 if inhabitant is not None:
                         inhabitant.previously_encountered = True
-                        talk_prompt = input("What would you like to say? : ")
-                        print("\n[You say: " + talk_prompt + "]")
+                        if command == "talk":
+                                talk_prompt = input("What would you like to say? : ")
+                                print("\n[You tell " + inhabitant.name + "]: " + talk_prompt)
+                        else:
+                                print("\n[You greet " + inhabitant.name + "]")
                         print("[" + inhabitant.name + " says]: " + inhabitant.conversation)
                 elif inhabitant is None:
                          print("There is nobody here to talk to.")

@@ -45,5 +45,5 @@ class Room():
         if direction in self.linked_rooms:
             return self.linked_rooms[direction]
         else:
-            print("You can't go that way")
+            print("\nYou can't go that way")
             return self

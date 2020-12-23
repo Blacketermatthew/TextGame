@@ -42,11 +42,11 @@ dining_hall.link_room(kitchen, "north")
 dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
 dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
 dining_hall_to_ballroom_hallway.link_room(ballroom, "west")
-ballroom.link_room(dining_hall_to_ballroom_hallway, "west")
+ballroom.link_room(dining_hall_to_ballroom_hallway, "east")
 
 
 ### Creating the Characters and Enemies ###
-dave = Enemy("Dave", "A smelly zombie")
+dave = Character("Dave", "A smelly zombie")
 dave.set_conversation("Brrlgrh... rgrhl... brains...")
 dave.set_weakness("cheese")
 dining_hall.set_character(dave)
@@ -82,24 +82,17 @@ while dead == False:
         if inhabitant is not None:
                 inhabitant.describe()
 
-        print("\nCommands available : [ Talk | Greet | Insult | Identify | Fight ]")
+        print("\nCommands available : [ Greet | Insult | Identify | Fight ]")
         command = (input("> ").lower())
+        print("\n")
         if command in ["north", "south", "east", "west"]:
                 current_room = current_room.move(command)
 
-        #elif command == "talk" or command == "greet":
-        elif command in ["talk", "greet"]: 
+        elif command == "greet": 
                 if inhabitant is not None:
                         inhabitant.previously_encountered = True
-                        if command == "talk":
-                                talk_prompt = input("What would you like to say? : ")
-                                print("\n[You tell " + inhabitant.name + "]: " + talk_prompt)
-                        elif command == "greet":
-                                print("\n[You greet " + inhabitant.name + "]")
-                        try:
-                                print("[" + inhabitant.name + " says ]: " + inhabitant.conversation)
-                        except:
-                                print("[" + inhabitant.name + " just stares at you.]")
+                        print("\n[You greet " + inhabitant.name + "]")
+                        inhabitant.greet()
                 elif inhabitant is None:
                          print("\nThere is nobody here to talk to.")
 
@@ -127,7 +120,17 @@ while dead == False:
 
         elif command == "insult":
                 if inhabitant is not None:
-                        inhabitant.insult()
+                        if inhabitant.insult_count < 3:
+                                inhabitant.insult()             
+                        elif inhabitant.insult_count >= 3:
+                                print(inhabitant.name + ", now angry, is charging towards you.")
+                                fight_with = input("What will you fight with? : ")
+                                fight_outcome = inhabitant.fight(fight_with)
+                                if fight_outcome == True:
+                                        current_room.set_character(None)
+                                elif fight_outcome == False:
+                                        print("\nYou have been defeated.  GAME OVER")
+                                        dead = True
                 elif inhabitant is None:
                         print("\nThere is nobody here to insult.")
 

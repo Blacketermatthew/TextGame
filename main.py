@@ -62,6 +62,12 @@ dinner_table.set_description("A thick, dark brown wooden table that can seat abo
         On the edge near one of the chairs, you see a box of matches and large, yellow candle.")
 dining_hall.set_item(dinner_table)
 
+matches = Item("a box of matches")
+matches.set_description("A small red and white box containing 4 matches.")
+dining_hall.set_item(matches)
+
+
+
 
 
 
@@ -80,7 +86,6 @@ main_game.welcome()
 while dead == False:
         print("\n")
         current_room.get_details()
-
         inhabitant = current_room.get_character()
         if inhabitant is not None:
                 inhabitant.describe()
@@ -88,12 +93,12 @@ while dead == False:
         print("\nCommands available : [ Greet | Insult | Identify | Fight ]")
         command = (input("> ").lower())
         print("\n")
+
         if command in ["north", "south", "east", "west"]:
                 current_room = current_room.move(command)
 
         elif command == "greet": 
                 if inhabitant is not None:
-                        inhabitant.previously_encountered = True
                         print("\n[You greet " + inhabitant.name + "]")
                         inhabitant.greet()
                 elif inhabitant is None:
@@ -117,9 +122,13 @@ while dead == False:
                        
         elif command == "identify":
                 if inhabitant is not None:
-                        inhabitant.identify()
+                        if inhabitant.__class__.__name__ != "Enemy":
+                                print(f"\nYou are unable to get a read on {inhabitant.name}")                
+                
                 elif inhabitant is None:
                         print("\nThere is nobody here to identify.")
+
+
 
         elif command == "insult":
                 if inhabitant is not None:

@@ -57,7 +57,10 @@ ballroom.set_character(gorgo)
 
 
 ### Creating and Placing Items ###
-
+dinner_table = Item("dining room table")
+dinner_table.set_description("A thick, dark brown wooden table that can seat about 6 people. \
+        On the edge near one of the chairs, you see a box of matches and large, yellow candle.")
+dining_hall.set_item(dinner_table)
 
 
 
@@ -120,6 +123,7 @@ while dead == False:
 
         elif command == "insult":
                 if inhabitant is not None:
+                        inhabitant.insult_count += 1
                         if inhabitant.insult_count < 3:
                                 inhabitant.insult()             
                         elif inhabitant.insult_count >= 3:

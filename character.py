@@ -39,19 +39,17 @@ class Character():
         if self.insult_count >= 3:
             if combat_item == self.weakness:
                 print("You fend " + self.name + " off with the " + combat_item)
-                del self
+                return True
             else:
                 print(self.name + " crushes you like the nerd you are")
-                dead = True
+                return False
         else:
             print(self.name + " doesn't want to fight you.")
-
-    def convert_character_into_enemy(self)
-
+        
     # Insult this character
     def insult(self):
         self.previously_encountered = True
-        self.insult_count += 1
+        #self.insult_count += 1
         insult_responses = { 
             0: "HEY.  Take it easy, pal.", 
             1: "Back off.  I'm warning you.", 

@@ -8,8 +8,7 @@ dave = Character("Dave", "A good man")
 
 gorgo = Enemy("Gorgo", "A bulbous, gurgling bipedal creature with six bony arms.  Smells like trash.")
 gorgo.set_weakness("flaming sword")
-gorgo.talk()
-print("What will you fight with?")
+        
 fight_with = input()
 gorgo.fight(fight_with)
 

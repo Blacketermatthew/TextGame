@@ -8,6 +8,7 @@ class Room():
         self.linked_rooms = {}
         self.character = None
         self.item = None
+        self.items_in_room = {}
         Room.number_of_rooms = Room.number_of_rooms + 1
 
     def set_description(self, room_description):

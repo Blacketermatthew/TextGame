@@ -62,11 +62,13 @@ dinner_table.set_description("A thick, dark brown wooden table that can seat abo
         On the edge near one of the chairs, you see a box of matches and large, yellow candle.")
 dining_hall.set_item(dinner_table)
 
-matches = Item("a box of matches")
+matches = Item("matches")
 matches.set_description("A small red and white box containing 4 matches.")
 dining_hall.set_item(matches)
 
-
+keys = Item("keys")
+keys.set_description("A bunch of keys held together by a large, rusty keyring.")
+dining_hall_to_ballroom_hallway.set_item(keys)
 
 
 
@@ -83,14 +85,17 @@ dead = False  ## Gets turned True once you die
 main_game = RPGInfo("Untitled Game")  ## Creates an instance of the title screen
 main_game.welcome()  
 
+inventory = []
 while dead == False:
         print("\n")
         current_room.get_details()
         inhabitant = current_room.get_character()
+        item_in_room = current_room.get_item()
+
         if inhabitant is not None:
                 inhabitant.describe()
 
-        print("\nCommands available : [ Greet | Insult | Identify | Fight ]")
+        print("\n\nCommands available: [ Greet | Insult | Identify | Take item | Inventory | Fight ]")
         command = (input("> ").lower())
         print("\n")
 
@@ -122,13 +127,13 @@ while dead == False:
                        
         elif command == "identify":
                 if inhabitant is not None:
-                        if inhabitant.__class__.__name__ != "Enemy":
+                        if inhabitant.__class__.__name__ == "Enemy":
+                                inhabitant.identify()
+                        else:
                                 print(f"\nYou are unable to get a read on {inhabitant.name}")                
-                
+                                        
                 elif inhabitant is None:
                         print("\nThere is nobody here to identify.")
-
-
 
         elif command == "insult":
                 if inhabitant is not None:
@@ -147,3 +152,16 @@ while dead == False:
                 elif inhabitant is None:
                         print("\nThere is nobody here to insult.")
 
+        elif command == ("take " + item_in_room.name):
+                if item_in_room is not None:
+                        if item_in_room.can_put_in_inventory == True:
+                                print(f"You add {item_in_room.name} to your inventory.")
+                                inventory.append(item_in_room)
+                elif item_in_room is None:
+                        print("\nThere is nothing in the room to take")
+
+
+        elif command == "inventory":
+                print("\n-----INVENTORY-----")
+                for single_item in inventory:
+                        print(single_item.name)

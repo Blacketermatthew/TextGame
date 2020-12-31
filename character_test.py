@@ -8,8 +8,17 @@ dave = Character("Dave", "A good man")
 
 gorgo = Enemy("Gorgo", "A bulbous, gurgling bipedal creature with six bony arms.  Smells like trash.")
 gorgo.set_weakness("flaming sword")
-gorgo.talk()
-print("What will you fight with?")
-fight_with = input()
-gorgo.fight(fight_with)
+        
+#fight_with = input()
+#gorgo.fight(fight_with)
 
+dave = Character("Dave", "A smelly zombie")
+dave.set_conversation("Brrlgrh... rgrhl... brains...")
+dave.set_weakness("cheese")
+
+print(dave.__class__.__name__)
+
+if dave.__class__.__name__ == "Character":
+    print("yes")
+else:
+    print(dave.__class__)

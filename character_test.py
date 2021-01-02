@@ -1,3 +1,4 @@
+from item import Item, Weapon
 from character import Character
 from character import Enemy
 dave = Character("Dave", "A good man")
@@ -16,9 +17,11 @@ dave = Character("Dave", "A smelly zombie")
 dave.set_conversation("Brrlgrh... rgrhl... brains...")
 dave.set_weakness("cheese")
 
-print(dave.__class__.__name__)
+#print(dave.__class__.__name__)
 
-if dave.__class__.__name__ == "Character":
-    print("yes")
-else:
-    print(dave.__class__)
+# sample_input = (input("What is your next command?: ").lower())
+# print(sample_input.startswith("hello"))
+# print(sample_input)
+
+inventory = Item.inventory 
+print(inventory)

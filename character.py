@@ -60,7 +60,7 @@ class Character():
             6: "DUDE."
             }
 
-        print("\n[You insult " + self.name + "]")
+        print("[You insult " + self.name + "]")
         print("[" + self.name + " says]: " + insult_responses[randint(0,6)])   
 
 class Enemy(Character):
@@ -72,7 +72,7 @@ class Enemy(Character):
     
     def identify(self):
         self.previously_encountered = True
-        print("\n[" + self.name + "]")
+        print("[" + self.name + "]")
         print(self.description)
         print("[Weakness: " + self.weakness + "]")
 

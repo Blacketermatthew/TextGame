@@ -60,15 +60,15 @@ ballroom.set_character(gorgo)
 dinner_table = Furniture("dining room table")
 dinner_table.set_description("A thick, dark brown wooden table that can seat about 6 people. \
         On the edge near one of the chairs, you see a box of matches and large, yellow candle.")
-dining_hall.set_item(dinner_table)
+dining_hall.place_item(dinner_table)
 
 matches = Item("matches")
 matches.set_description("A small red and white box containing 4 matches.")
-dining_hall.set_item(matches)
+dining_hall.place_item(matches)
 
 keys = Item("keys")
 keys.set_description("A bunch of keys held together by a large, rusty keyring.")
-dining_hall_to_ballroom_hallway.set_item(keys)
+dining_hall_to_ballroom_hallway.place_item(keys)
 
 
 
@@ -78,20 +78,25 @@ dining_hall_to_ballroom_hallway.set_item(keys)
 ################### MAIN GAME ########################
 ######################################################
 
-### Game Setup ###
+### Game Variable Setup ###
 current_room = kitchen  ## Where you start off.
 dead = False  ## Gets turned True once you die
+inventory = Item.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
 
 main_game = RPGInfo("Untitled Game")  ## Creates an instance of the title screen
 main_game.welcome()  
 
-inventory = Item.inventory
+
+### Main Game/Command Loop ###
+
+
+# This baby keeps the game going while you're alive.
 while dead == False:
         print("\n===============================================================================\n\n")
         
         current_room.get_details()
         inhabitant = current_room.get_character()
-        item_in_room = current_room.get_item()
+        items_in_room = current_room.get_all_items_in_room()
 
         if inhabitant is not None:
                 inhabitant.describe()
@@ -159,14 +164,22 @@ while dead == False:
                 Item.check_inventory(Item)
         
         elif command.startswith("take") is True:
-                if item_in_room is not None:
-                        if command == ("take " + item_in_room.name):
-                                if item_in_room.can_put_in_inventory == True:
-                                        print(f"You add {item_in_room.name} to your inventory.")
-                                        inventory.append(item_in_room)
+                #for x in items_in_room:  # For checking to see what items are in this room.
+                #        print(x.get_name())
+
+                items_in_room_list = [x.get_name() for x in items_in_room]
+
+                if items_in_room is not None:
+                        item_taken = command[5:]  # This tries to return the text after "take " as an item
+                        if item_taken in items_in_room_list:
+                                if items_in_room_list[item_taken].can_put_in_inventory == True:
+                                        print(f"You add {item_taken} to your inventory.") 
+                                        inventory.append(item_taken)
+
                         else:
                                 print("What would you like to take?")
-                elif item_in_room is None:
+
+                elif items_in_room is None:
                         print("There is nothing in the room to take")
 
         else: 

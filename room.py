@@ -32,14 +32,14 @@ class Room():
     def get_character(self):
         return self.character
 
-    def set_item(self, new_item):
-        self.item = new_item
-    
-    def get_item(self):
-        return self.item
+    # def set_item(self, new_item):
+    #     self.item = new_item
 
-    # def place_item(self, new_item):
-    #     self.items_in_room.append(new_item)
+    def place_item(self, new_item):
+        self.items_in_room.append(new_item)
+
+    def get_all_items_in_room(self):
+        return self.items_in_room
 
     def link_room(self, room_to_link, direction):
         self.linked_rooms[direction] = room_to_link

@@ -1,6 +1,7 @@
-from item import Item, Weapon
-from character import Character
-from character import Enemy
+from room import Room
+from item import Item, Furniture, Weapon
+from character import Character, Enemy
+from rpginfo import RPGInfo
 dave = Character("Dave", "A good man")
 
 #dave.set_conversation("Hey there!  Dave's the name.  What can I do for you?")

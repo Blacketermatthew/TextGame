@@ -1,3 +1,4 @@
+from player import Player
 from room import Room
 from item import Item, Furniture, Weapon
 from character import Character, Enemy
@@ -80,9 +81,10 @@ dining_hall_to_ballroom_hallway.place_item(keys)
 
 ### Game Variable Setup ###
 current_room = kitchen  ## Where you start off.
-dead = False  ## Gets turned True once you die
-inventory = Item.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
+player = Player()
+inventory = player.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
 
+dead = False  ## Gets turned True once you die
 main_game = RPGInfo("Untitled Game")  ## Creates an instance of the title screen
 main_game.welcome()  
 
@@ -161,21 +163,37 @@ while dead == False:
                         print("There is nobody here to insult.")
 
         elif command == "inventory":
-                Item.check_inventory(Item)
-        
+                #Item.check_inventory(Item)
+                player.check_inventory()
+
         elif command.startswith("take") is True:
+                
+                # Holding onto this code for a bit while I make sure its predecessor 
                 #for x in items_in_room:  # For checking to see what items are in this room.
                 #        print(x.get_name())
+                #print(current_room.items_in_room)
+                
+                # items_in_room_list = {x.get_name() for x in items_in_room}
+                # print(items_in_room_list)
 
-                items_in_room_list = [x.get_name() for x in items_in_room]
-
+                # items_in_room_dict = {}
+                # for item in items_in_room:
+                #         items_in_room_dict[str(item.get_name())] = item
+                
                 if items_in_room is not None:
                         item_taken = command[5:]  # This tries to return the text after "take " as an item
-                        if item_taken in items_in_room_list:
-                                if items_in_room_list[item_taken].can_put_in_inventory == True:
+                        if item_taken in items_in_room:
+                                if items_in_room[item_taken].can_put_in_inventory == True:
                                         print(f"You add {item_taken} to your inventory.") 
                                         inventory.append(item_taken)
+                                        # del items_in_room[item_taken]
+                                        items_in_room.pop(item_taken)
 
+                                else:
+                                        print("You are unable to add that item to your inventory.")
+
+                        elif item_taken in inventory:
+                                print("You've already added that to your inventory.")
                         else:
                                 print("What would you like to take?")
 

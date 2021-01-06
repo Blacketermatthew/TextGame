@@ -1,3 +1,5 @@
+from item import *
+
 class Room():
 
     number_of_rooms = 0
@@ -8,7 +10,7 @@ class Room():
         self.linked_rooms = {}
         self.character = None
         self.item = None
-        self.items_in_room = []
+        self.items_in_room = {}
         Room.number_of_rooms = Room.number_of_rooms + 1
 
     def set_description(self, room_description):
@@ -36,7 +38,11 @@ class Room():
     #     self.item = new_item
 
     def place_item(self, new_item):
-        self.items_in_room.append(new_item)
+        self.items_in_room[new_item.get_name()] = new_item
+
+    def remove_item(self, name):
+        self.items_in_room.pop(name, None)
+        #return self.items_in_room
 
     def get_all_items_in_room(self):
         return self.items_in_room

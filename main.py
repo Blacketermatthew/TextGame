@@ -1,5 +1,5 @@
 from player import Player
-from room import Room
+from room import *
 from item import Item, Furniture, Weapon
 from character import Character, Enemy
 from rpginfo import RPGInfo
@@ -22,28 +22,28 @@ from rpginfo import RPGInfo
 
 
 
-### Room Creation ###
-kitchen = Room("Kitchen")
-kitchen.set_description("Your standard kitchen.  It's smaller than you'd like.")
+# ### Room Creation ###
+# kitchen = Room("Kitchen")
+# kitchen.set_description("Your standard kitchen.  It's smaller than you'd like.")
 
-dining_hall = Room("Dining hall")
-dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table is a candle and a few matches.")
+# dining_hall = Room("Dining hall")
+# dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table is a candle and a few matches.")
 
-dining_hall_to_ballroom_hallway = Room("Hallway")
-dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")
+# dining_hall_to_ballroom_hallway = Room("Hallway")
+# dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")
 
-ballroom = Room("Ballroom")
-ballroom.set_description("Despite the name, there are very few balls present.  Light orange marble covers the circular dance floor, with white pillars standing along the outer edge.")
+# ballroom = Room("Ballroom")
+# ballroom.set_description("Despite the name, there are very few balls present.  Light orange marble covers the circular dance floor, with white pillars standing along the outer edge.")
 
 
-### Mapping Out the Rooms. ###
-## link_room() connects one room to another room in the direction of wherever the parameter room is.  Room must first be declared as a Room() object
-kitchen.link_room(dining_hall, "south") ## Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
-dining_hall.link_room(kitchen, "north")
-dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
-dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
-dining_hall_to_ballroom_hallway.link_room(ballroom, "west")
-ballroom.link_room(dining_hall_to_ballroom_hallway, "east")
+# ### Mapping Out the Rooms. ###
+# ## link_room() connects one room to another room in the direction of wherever the parameter room is.  Room must first be declared as a Room() object
+# kitchen.link_room(dining_hall, "south") ## Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
+# dining_hall.link_room(kitchen, "north")
+# dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
+# dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
+# dining_hall_to_ballroom_hallway.link_room(ballroom, "west")
+# ballroom.link_room(dining_hall_to_ballroom_hallway, "east")
 
 
 ### Creating the Characters and Enemies ###
@@ -58,6 +58,10 @@ ballroom.set_character(gorgo)
 
 
 ### Creating and Placing Items ###
+cheese = Item("cheese")
+cheese.set_description("A single slice of yellow cheese.  I doubt this will come in handy.")
+kitchen.place_item(cheese)
+
 dinner_table = Furniture("dining room table")
 dinner_table.set_description("A thick, dark brown wooden table that can seat about 6 people. \
         On the edge near one of the chairs, you see a box of matches and large, yellow candle.")

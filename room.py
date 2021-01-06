@@ -64,3 +64,31 @@ class Room():
         else:
             print("\nYou can't go that way")
             return self
+
+
+
+
+
+
+### Room Creation ###
+kitchen = Room("Kitchen")
+kitchen.set_description("Your standard kitchen.  It's smaller than you'd like.")
+
+dining_hall = Room("Dining hall")
+dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table is a candle and a few matches.")
+
+dining_hall_to_ballroom_hallway = Room("Hallway")
+dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")
+
+ballroom = Room("Ballroom")
+ballroom.set_description("Despite the name, there are very few balls present.  Light orange marble covers the circular dance floor, with white pillars standing along the outer edge.")
+
+
+### Mapping Out the Rooms. ###
+## link_room() connects one room to another room in the direction of wherever the parameter room is.  Room must first be declared as a Room() object
+kitchen.link_room(dining_hall, "south") ## Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
+dining_hall.link_room(kitchen, "north")
+dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
+dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
+dining_hall_to_ballroom_hallway.link_room(ballroom, "west")
+ballroom.link_room(dining_hall_to_ballroom_hallway, "east")

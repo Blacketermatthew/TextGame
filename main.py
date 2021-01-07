@@ -1,9 +1,5 @@
 from player import Player
-<<<<<<< HEAD
-from room import *
-=======
 import room as rm
->>>>>>> Insult/Fight-tests
 from item import Item, Furniture, Weapon
 from character import Character, Enemy
 from rpginfo import RPGInfo
@@ -64,22 +60,6 @@ rm.ballroom.set_character(gorgo)
 ### Creating and Placing Items ###
 cheese = Item("cheese")
 cheese.set_description("A single slice of yellow cheese.  I doubt this will come in handy.")
-<<<<<<< HEAD
-kitchen.place_item(cheese)
-
-dinner_table = Furniture("dining room table")
-dinner_table.set_description("A thick, dark brown wooden table that can seat about 6 people. \
-        On the edge near one of the chairs, you see a box of matches and large, yellow candle.")
-dining_hall.place_item(dinner_table)
-
-matches = Item("matches")
-matches.set_description("A small red and white box containing 4 matches.")
-dining_hall.place_item(matches)
-
-keys = Item("keys")
-keys.set_description("A bunch of keys held together by a large, rusty keyring.")
-dining_hall_to_ballroom_hallway.place_item(keys)
-=======
 rm.kitchen.place_item(cheese)
 
 dinner_table = Furniture("table")
@@ -94,7 +74,6 @@ rm.dining_hall.place_item(matches)
 keys = Item("keys")
 keys.set_description("A bunch of keys held together by a large, rusty keyring.")
 rm.dining_hall_to_ballroom_hallway.place_item(keys)
->>>>>>> Insult/Fight-tests
 
 
 
@@ -105,11 +84,7 @@ rm.dining_hall_to_ballroom_hallway.place_item(keys)
 ######################################################
 
 ### Game Variable Setup ###
-<<<<<<< HEAD
-current_room = kitchen  ## Where you start off.
-=======
 current_room = rm.kitchen  ## Where you start off.
->>>>>>> Insult/Fight-tests
 player = Player()
 inventory = player.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
 
@@ -202,20 +177,12 @@ while dead == False:
                         print("There is nobody here to insult.")
 
         elif command == "inventory":
-<<<<<<< HEAD
-=======
-
->>>>>>> Insult/Fight-tests
                 #Item.check_inventory(Item)
                 player.check_inventory()
 
         elif command.startswith("take") is True:
                 
-<<<<<<< HEAD
-                # Holding onto this code for a bit while I make sure its predecessor 
-=======
                 ### Holding onto this code for a bit while I make sure its predecessor works
->>>>>>> Insult/Fight-tests
                 #for x in items_in_room:  # For checking to see what items are in this room.
                 #        print(x.get_name())
                 #print(current_room.items_in_room)
@@ -232,24 +199,13 @@ while dead == False:
                         if item_taken in items_in_room:
                                 if items_in_room[item_taken].can_put_in_inventory == True:
                                         print(f"You add {item_taken} to your inventory.") 
-<<<<<<< HEAD
-                                        inventory.append(item_taken)
-                                        # del items_in_room[item_taken]
-                                        items_in_room.pop(item_taken)
-
-=======
                                         inventory[item_taken] = items_in_room[item_taken]
                                         items_in_room.pop(item_taken)
->>>>>>> Insult/Fight-tests
                                 else:
                                         print("You are unable to add that item to your inventory.")
 
                         elif item_taken in inventory:
                                 print("You've already added that to your inventory.")
-<<<<<<< HEAD
-=======
-
->>>>>>> Insult/Fight-tests
                         else:
                                 print("What would you like to take?")
 

@@ -9,7 +9,7 @@ class Character():
         self.conversation = None
         self.previously_encountered = False
         self.insult_count = 0
-        #self.weakness = None
+        self.weakness = None
 
     # Describe this character
     def describe(self):
@@ -49,7 +49,7 @@ class Character():
     # Insult this character
     def insult(self):
         self.previously_encountered = True
-        #self.insult_count += 1
+        print(self.insult_count)
         insult_responses = { 
             0: "HEY.  Take it easy, pal.", 
             1: "Back off.  I'm warning you.", 
@@ -84,4 +84,7 @@ class Enemy(Character):
         else:
             print(self.name + " crushes you like the nerd you are")
             return False
+    
+
+
     

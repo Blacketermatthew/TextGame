@@ -1,4 +1,4 @@
-from item import Item, Weapon, Furniture
+import item 
 
 class Room():
 
@@ -16,11 +16,17 @@ class Room():
     def set_description(self, room_description):
         self.description = room_description
 
+    def get_description(self):
+        return self.description
+
     def describe(self):
         print(self.description)
 
-    # def set_name(self, room_name):
-    #     self.name = room_name
+    def set_name(self, room_name):
+        self.name = room_name
+    
+    def get_name(self):
+        return self.name
 
     def set_character(self, new_character):
         self.character = new_character
@@ -33,13 +39,12 @@ class Room():
 
     def remove_item(self, name):
         self.items_in_room.pop(name, None)
-        #return self.items_in_room
-
+        
     def get_all_items_in_room(self):
         return self.items_in_room
 
     def describe_item(self, name):
-        print(name.get_description())
+        return self.items_in_room[name].get_description()
 
     def link_room(self, room_to_link, direction):
         self.linked_rooms[direction] = room_to_link
@@ -66,7 +71,7 @@ class Room():
 
 ### Room Creation ###
 kitchen = Room("Kitchen")
-kitchen.set_description("Your standard kitchen, but worse.")
+kitchen.set_description("Your standard kitchen.  It's smaller than you'd like.")
 
 dining_hall = Room("Dining hall")
 dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table is a candle and a few matches.")

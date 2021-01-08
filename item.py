@@ -1,3 +1,5 @@
+import room as rm
+
 class Item():
 
     def __init__(self, name):
@@ -16,21 +18,6 @@ class Item():
     
     def get_description(self):
         print(self.description)
-
-    # def add_to_inventory(self):
-    #     if self.can_put_in_inventory == True:
-    #         print(f"You add {self.name} to your inventory.")
-    #         Item.inventory.append(self)
-    #     else:
-    #         print("You cannot add this item to your inventory.")
-
-    # def check_inventory(self):
-    #     print("-----INVENTORY-----")
-    #     for item in Item.inventory:
-    #         print(item.name)
-
-    # def check_item(self):
-    #     print(self.can_put_in_inventory)
 
 
 class Weapon(Item):

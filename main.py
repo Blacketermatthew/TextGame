@@ -177,7 +177,6 @@ while dead == False:
                         print("There is nobody here to insult.")
 
         elif command == "inventory":
-                #Item.check_inventory(Item)
                 player.check_inventory()
 
         elif command.startswith("take") is True:
@@ -196,6 +195,7 @@ while dead == False:
                 
                 if items_in_room is not None:
                         item_taken = command[5:]  # This tries to return the text after "take " as an item
+
                         if item_taken in items_in_room:
                                 if items_in_room[item_taken].can_put_in_inventory == True:
                                         print(f"You add {item_taken} to your inventory.") 
@@ -217,7 +217,8 @@ while dead == False:
                 object_looked_at = command[8:]  # Everything after "look at "
 
                 if object_looked_at in items_in_room:
-                        current_room.describe_item(items_in_room[object_looked_at])
+                        #print(current_room.items_in_room[object_looked_at].get_description())
+                        current_room.describe_item(object_looked_at)
                         print(current_room.items_in_room[object_looked_at])   # Will be removed; used for testing.
 
                 elif object_looked_at in inventory:

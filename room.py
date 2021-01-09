@@ -16,14 +16,14 @@ class Room():
     def set_description(self, room_description):
         self.description = room_description
 
-    def get_description(self):
-        return self.description
+    # def get_description(self):
+    #     return self.description
 
     def describe(self):
         print(self.description)
 
-    def set_name(self, room_name):
-        self.name = room_name
+    # def set_name(self, room_name):
+    #     self.name = room_name
     
     def get_name(self):
         return self.name
@@ -60,6 +60,7 @@ class Room():
     def move(self, direction):
         if direction in self.linked_rooms:
             return self.linked_rooms[direction]
+            print(f"You go {command}.")
         else:
             print("\nYou can't go that way")
             return self

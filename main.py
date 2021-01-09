@@ -15,8 +15,7 @@ from rpginfo import RPGInfo
 - Have stats work almost like skill rolls when trying to identify, fight, etc
 - Maybe? Allow for clothing and armor
 -
- 
- 
+
 """
 ## --------------------------------- ##
 
@@ -47,8 +46,8 @@ from rpginfo import RPGInfo
 
 
 ### Creating the Characters and Enemies ###
-dave = Character("Dave", "A smelly zombie")
-dave.set_conversation("Brrlgrh... rgrhl... brains...")
+dave = Character("Dave", "A zombie with a terrible dairy allergy.")
+dave.set_conversation("Brrlgrh... rgrhl... hello...")
 dave.set_weakness("cheese")
 rm.dining_hall.set_character(dave)
 
@@ -77,14 +76,12 @@ rm.dining_hall_to_ballroom_hallway.place_item(keys)
 
 
 
-
-
 ######################################################
 ################### MAIN GAME ########################
 ######################################################
 
 ### Game Variable Setup ###
-current_room = rm.kitchen  ## Where you start off.
+current_room = rm.dining_hall  ## Where you start off.
 player = Player()
 inventory = player.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
 
@@ -104,7 +101,7 @@ while dead == False:
         inhabitant = current_room.get_character()
         items_in_room = current_room.get_all_items_in_room()
 
-        if inhabitant is not None:
+        if inhabitant is not None:   
                 inhabitant.describe()
 
         print("\n\nCommands available: [ Greet | Insult | Identify | Fight | Look At | Take | Inventory ]")
@@ -115,7 +112,6 @@ while dead == False:
         if command in ["north", "south", "east", "west"]:
 
                 current_room = current_room.move(command)
-                print(f"You go {command}.")
 
         elif command == "greet": 
 
@@ -158,11 +154,11 @@ while dead == False:
 
         elif command == "insult":
 
+                # If you insult somebody 3+ times, they'll attack you.  
                 if inhabitant is not None:
                         inhabitant.insult_count += 1
                         if inhabitant.insult_count < 3:
                                 inhabitant.insult()    
-
                         elif inhabitant.insult_count >= 3:
                                 print(inhabitant.name + ", now angry, is charging towards you.")
                                 fight_with = input("What will you fight with? : ")
@@ -194,13 +190,14 @@ while dead == False:
                 #         items_in_room_dict[str(item.get_name())] = item
                 
                 if items_in_room is not None:
-                        item_taken = command[5:]  # This tries to return the text after "take " as an item
+                        item_taken = command[5:]  # This grabs the text after "take " to check l
 
                         if item_taken in items_in_room:
                                 if items_in_room[item_taken].can_put_in_inventory == True:
                                         print(f"You add {item_taken} to your inventory.") 
-                                        inventory[item_taken] = items_in_room[item_taken]
-                                        items_in_room.pop(item_taken)
+                                        inventory[item_taken] = items_in_room[item_taken]  #  Adds item to inventory
+                                        current_room.remove_item(item_taken)
+                                        #items_in_room.pop(item_taken)  # Removes item from that room's dict.
                                 else:
                                         print("You are unable to add that item to your inventory.")
 
@@ -214,8 +211,10 @@ while dead == False:
 
         elif command.startswith("look at") is True:
 
-                object_looked_at = command[8:]  # Everything after "look at "
+                object_looked_at = command[8:]  # Everything after "look at " is grabbed
 
+                # Items are placed in different dicts depending on if they're in your inentory or still in the room.
+                # This if else statement prints the descriptions for these items.
                 if object_looked_at in items_in_room:
                         #print(current_room.items_in_room[object_looked_at].get_description())
                         current_room.describe_item(object_looked_at)

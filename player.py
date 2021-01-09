@@ -10,5 +10,5 @@ class Player():
         print("-----INVENTORY-----")
         for item in self.inventory:
             print(item)
-            #print(self.inventory[item].get_description())
+            #print(self.inventory[item].describe())
         

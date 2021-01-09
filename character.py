@@ -22,6 +22,7 @@ class Character():
     def set_conversation(self, conversation):
         self.conversation = conversation
 
+    # Defines its weakness 
     def set_weakness(self, weakness):
         self.weakness = weakness
 
@@ -33,7 +34,7 @@ class Character():
         else:
             print(self.name + " just stares at you.")
     
-    # Fight with this character:
+    # Fight with this character
     def fight(self, combat_item):
         self.previously_encountered = True
         if self.insult_count >= 3:
@@ -49,7 +50,6 @@ class Character():
     # Insult this character
     def insult(self):
         self.previously_encountered = True
-        print(self.insult_count)
         insult_responses = { 
             0: "HEY.  Take it easy, pal.", 
             1: "Back off.  I'm warning you.", 

@@ -59,8 +59,8 @@ class Room():
 
     def move(self, direction):
         if direction in self.linked_rooms:
+            print(f"You go {direction}.")
             return self.linked_rooms[direction]
-            print(f"You go {command}.")
         else:
             print("You can't go that way")
             return self

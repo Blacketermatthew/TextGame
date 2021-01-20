@@ -53,9 +53,9 @@ rm.ballroom.set_character(char.gorgo)
 ### Creating and Placing Items ###
 kitchen_counter = Item("kitchen counter")
 kitchen_counter.set_description("A white countertop with small black drops of paint deliberately placed across it.\n"
-                "You see a butter knife, a slice of cheese, and a metal pan."
+                "You see a butter knife, a slice of cheese, and a metal pan.")
 
-butter_knife = Weapon("butter knife")
+butter_knife = Weapon("butter knife", 1)
 butter_knife.set_description("A small, barely jagged knife.  Best used to spread condiments.")
 
 
@@ -70,7 +70,7 @@ rm.dining_hall.place_item(dinner_table)
 
 candle = Item("candle")
 candle.set_description("A half-melted candle on a brass candleholder.")
-rm.dining_hall.place_item()
+dinner_table.add_item(candle)
 
 matches = Item("matches")
 matches.set_description("A small red and white box containing 4 matches.")
@@ -233,4 +233,8 @@ while dead == False:
 
         else: 
                 print(f"Sorry, I did not understand the command: '{command}'")
+                try:
+                        dinner_table.show_items()
+                except:
+                        continue
 

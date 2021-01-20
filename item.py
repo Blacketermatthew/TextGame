@@ -39,4 +39,4 @@ class Furniture(Item):
             print(item)
 
     def remove_item(self, item_to_remove):
-        self.
+        self.placed_or_contained_items.pop(item_to_remove, None)

@@ -1,17 +1,14 @@
 from player import Player
 import room as rm
 from item import Item, Furniture, Weapon
+import character as char
 from character import Character, Enemy
 from rpginfo import RPGInfo
 
 ## ------- TO DO LIST -------------- ##
 """
 - Create items.  
-- Create figure out how to add items to rooms
-- Create an inventory or backpack system
 - Create stats for characters and items
-- Maybe? Have identify distinguish between characters and items 
-        (i.e. "identify stranger" vs "identify sword")
 - Have stats work almost like skill rolls when trying to identify, fight, etc
 - Maybe? Allow for clothing and armor
 -
@@ -46,14 +43,11 @@ from rpginfo import RPGInfo
 
 
 ### Creating the Characters and Enemies ###
-dave = Character("Dave", "A zombie with a terrible dairy allergy.")
-dave.set_conversation("Brrlgrh... rgrhl... hello...")
-dave.set_weakness("cheese")
-rm.dining_hall.set_character(dave)
-
-gorgo = Enemy("Gorgo", "A bulbous, gurgling bipedal creature with six bony arms.  Smells like trash.")
-gorgo.set_weakness("flaming sword")
-rm.ballroom.set_character(gorgo)
+# dave = Character("Dave", "A zombie with a terrible dairy allergy.")
+# dave.set_conversation("Brrlgrh... rgrhl... hello...")
+# dave.set_weakness("cheese")
+rm.dining_hall.set_character(char.dave)
+rm.ballroom.set_character(char.gorgo)
 
 
 ### Creating and Placing Items ###
@@ -85,7 +79,6 @@ rm.dining_hall.place_item(matches)
 keys = Item("keys")
 keys.set_description("A bunch of keys held together by a large, rusty keyring.")
 rm.dining_hall_to_ballroom_hallway.place_item(keys)
-
 
 
 ######################################################
@@ -145,7 +138,7 @@ while dead == False:
                                 dead = True
 
                 elif inhabitant is not None and isinstance(inhabitant, Character):
-                        print("You should not fight someone who isn't your enemy!")
+                        inhabitant.fight(None)
 
                 elif inhabitant is None:
                         print("There is nobody here to fight.")
@@ -216,7 +209,7 @@ while dead == False:
                         elif item_taken in inventory:
                                 print("You've already added that to your inventory.")
                         else:
-                                print("You are unable to add that item to your inventory.")
+                                 print(f"I don't think I see '{item_taken}' in here.  What would you like to take?")
 
                 elif items_in_room is None:
                         print("There is nothing in the room to take")

@@ -29,10 +29,14 @@ class Character():
     # Talk to this character
     def greet(self):
         if self.conversation is not None:
-            self.previously_encountered = True
+            if self.previously_encountered == True:
+                print("[You greet " + self.name + ".]")
+            else:
+                self.previously_encountered = True
+                print("[You greet the stranger.]")
             print("[" + self.name + " says]: " + self.conversation)
         else:
-            print(self.name + " just stares at you.")
+            print("They just stare at you.")
     
     # Fight with this character
     def fight(self, combat_item):
@@ -85,6 +89,12 @@ class Enemy(Character):
             print(self.name + " crushes you like the nerd you are")
             return False
     
-
-
     
+    
+dave = Character("Dave", "A zombie with a terrible dairy allergy.")
+dave.set_conversation("Brrlgrh... rgrhl... hello...")
+dave.set_weakness("cheese")
+
+
+gorgo = Enemy("Gorgo", "A bulbous, gurgling bipedal creature with six bony arms.  Smells like trash.")
+gorgo.set_weakness("flaming sword")

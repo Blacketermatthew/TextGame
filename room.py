@@ -62,7 +62,7 @@ class Room():
             return self.linked_rooms[direction]
             print(f"You go {command}.")
         else:
-            print("\nYou can't go that way")
+            print("You can't go that way")
             return self
 
 
@@ -72,7 +72,7 @@ class Room():
 
 ### Room Creation ###
 kitchen = Room("Kitchen")
-kitchen.set_description("Your standard kitchen.  It's smaller than you'd like.")
+kitchen.set_description("A small, beige space with a fridge and a sink.  Various items are scattered on the counter.")
 
 dining_hall = Room("Dining hall")
 dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table is a candle and a few matches.")

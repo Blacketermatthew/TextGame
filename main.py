@@ -57,6 +57,14 @@ rm.ballroom.set_character(gorgo)
 
 
 ### Creating and Placing Items ###
+kitchen_counter = Item("kitchen counter")
+kitchen_counter.set_description("A white countertop with small black drops of paint deliberately placed across it.\n"
+                "You see a butter knife, a slice of cheese, and a metal pan."
+
+butter_knife = Weapon("butter knife")
+butter_knife.set_description("A small, barely jagged knife.  Best used to spread condiments.")
+
+
 cheese = Item("cheese")
 cheese.set_description("A single slice of yellow cheese.  I doubt this will come in handy.")
 rm.kitchen.place_item(cheese)
@@ -65,6 +73,10 @@ dinner_table = Furniture("table")
 dinner_table.set_description("A grayed, wooden table that can seat about 6 people.\n"
                 "On the edge, you see a box of matches and large, yellow candle.")
 rm.dining_hall.place_item(dinner_table)
+
+candle = Item("candle")
+candle.set_description("A half-melted candle on a brass candleholder.")
+rm.dining_hall.place_item()
 
 matches = Item("matches")
 matches.set_description("A small red and white box containing 4 matches.")
@@ -204,7 +216,7 @@ while dead == False:
                         elif item_taken in inventory:
                                 print("You've already added that to your inventory.")
                         else:
-                                print("What would you like to take?")
+                                print("You are unable to add that item to your inventory.")
 
                 elif items_in_room is None:
                         print("There is nothing in the room to take")
@@ -222,7 +234,7 @@ while dead == False:
 
                 elif object_looked_at in inventory:
                         inventory[object_looked_at].get_description()
-                        print(inventory[object_looked_at])  # Will be removed; used for testing.
+                        #print(inventory[object_looked_at])  # Will be removed; used for testing.
                 else:
                         print("What would you like to look at?")
 

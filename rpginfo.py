@@ -1,4 +1,4 @@
-import pyfiglet
+import pyfiglet  # This needs to be installed
 
 class RPGInfo():
     def __init__(self, game_title):

@@ -65,7 +65,6 @@ while dead == False:
         elif command == "greet": 
 
                 if inhabitant is not None:
-                        print("[You greet " + inhabitant.name + "]")
                         inhabitant.greet()
                 elif inhabitant is None:
                         print("There is nobody here to talk to.")
@@ -103,11 +102,16 @@ while dead == False:
 
         elif command == "insult":
 
-                # If you insult somebody 3+ times, they'll attack you.  
+                # If you insult somebody 3+ times, they'll attack you.  Insulting an enemy once will cause them to immediately attack you.
                 if inhabitant is not None:
+                        if inhabitant.__class__.__name__ == "Enemy": 
+                                inhabitant.insult_count = 3   
+
                         inhabitant.insult_count += 1
+
                         if inhabitant.insult_count < 3:
                                 inhabitant.insult()    
+
                         elif inhabitant.insult_count >= 3:
                                 print(inhabitant.name + ", now angry, is charging towards you.")
                                 fight_with = input("What will you fight with? : ")
@@ -122,6 +126,7 @@ while dead == False:
                         print("There is nobody here to insult.")
 
         elif command == "inventory":
+
                 player.check_inventory()
 
         elif command.startswith("take") is True:

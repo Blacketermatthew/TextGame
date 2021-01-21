@@ -31,8 +31,12 @@ class Furniture(Item):
         self.can_put_in_inventory = False
 
 
+### ------------------------------------------------------ ###
 
 
+### Room Creation ###
+
+# Kitchen #
 
 kitchen_counter = Furniture("counter")
 kitchen_counter.set_description("A white countertop with small black drops of paint deliberately splattered across it for decoration.\n"
@@ -55,6 +59,9 @@ cheese = Item("cheese")
 cheese.set_description("A single slice of yellow cheese.  I doubt this will come in handy.")
 rm.kitchen.place_item(cheese)
 
+
+# Dining hall #
+
 dinner_table = Furniture("table")
 dinner_table.set_description("A grayed, wooden table that can seat about 6 people.\n"
                 "On the edge, you see a box of matches and large, yellow candle.")
@@ -67,6 +74,9 @@ rm.dining_hall.place_item(candle)
 matches = Item("matches")
 matches.set_description("A small red and white box containing 4 matches.")
 rm.dining_hall.place_item(matches)
+
+
+# Dining hall to ballroom hallway
 
 keys = Item("keys")
 keys.set_description("A bunch of keys held together by a large, rusty keyring.")

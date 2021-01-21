@@ -90,13 +90,15 @@ class Enemy(Character):
             print(self.name + " crushes you like the nerd you are")
             return False
     
-    
+### ------------------------------------------------------ ###
+
+
     
 dave = Character("Dave", "A zombie with a terrible dairy allergy.")
 dave.set_conversation("Brrlgrh... rgrhl... hello...")
 dave.set_weakness("cheese")
-rm.dining_hall.set_character(char.dave)
+rm.dining_hall.set_character(dave)
 
 gorgo = Enemy("Gorgo", "A bulbous, gurgling bipedal creature with six bony arms.  Smells like trash.")
 gorgo.set_weakness("flaming sword")
-rm.ballroom.set_character(char.gorgo)
+rm.ballroom.set_character(gorgo)

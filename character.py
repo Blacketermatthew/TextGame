@@ -1,4 +1,5 @@
 from random import randint
+import room as rm
 
 class Character():
 
@@ -94,7 +95,8 @@ class Enemy(Character):
 dave = Character("Dave", "A zombie with a terrible dairy allergy.")
 dave.set_conversation("Brrlgrh... rgrhl... hello...")
 dave.set_weakness("cheese")
-
+rm.dining_hall.set_character(char.dave)
 
 gorgo = Enemy("Gorgo", "A bulbous, gurgling bipedal creature with six bony arms.  Smells like trash.")
 gorgo.set_weakness("flaming sword")
+rm.ballroom.set_character(char.gorgo)

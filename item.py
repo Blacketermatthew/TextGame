@@ -29,14 +29,45 @@ class Furniture(Item):
     def __init__(self, name):
         super().__init__(name)
         self.can_put_in_inventory = False
-        self.placed_or_contained_items = {}
 
-    def add_item(self, new_item):
-        self.placed_or_contained_items[new_item.get_name()] = new_item
 
-    def show_items(self):
-        for item in self.placed_or_contained_items:
-            print(item)
 
-    def remove_item(self, item_to_remove):
-        self.placed_or_contained_items.pop(item_to_remove, None)
+
+
+kitchen_counter = Furniture("counter")
+kitchen_counter.set_description("A white countertop with small black drops of paint deliberately splattered across it for decoration.\n"
+                "You see a butter knife, a slice of cheese, and a metal pan.")
+rm.kitchen.place_item(kitchen_counter)
+
+fridge = Item("fridge")
+fridge.set_description("You don't have time to eat right now.")
+rm.kitchen.place_item(fridge)
+
+butter_knife = Weapon("butter knife", 1)  # second argument is its damage.
+butter_knife.set_description("A small, barely jagged knife.  Best used to spread condiments.")
+rm.kitchen.place_item(butter_knife)
+
+metal_pan = Weapon("metal pan", 5)
+metal_pan.set_description("An old cast iron pan.  It's pretty heavy.  You could seriously whack somebody with this.")
+rm.kitchen.place_item(metal_pan)
+
+cheese = Item("cheese")
+cheese.set_description("A single slice of yellow cheese.  I doubt this will come in handy.")
+rm.kitchen.place_item(cheese)
+
+dinner_table = Furniture("table")
+dinner_table.set_description("A grayed, wooden table that can seat about 6 people.\n"
+                "On the edge, you see a box of matches and large, yellow candle.")
+rm.dining_hall.place_item(dinner_table)
+
+candle = Item("candle")
+candle.set_description("A half-melted candle on a brass candleholder.")
+rm.dining_hall.place_item(candle)
+
+matches = Item("matches")
+matches.set_description("A small red and white box containing 4 matches.")
+rm.dining_hall.place_item(matches)
+
+keys = Item("keys")
+keys.set_description("A bunch of keys held together by a large, rusty keyring.")
+rm.dining_hall_to_ballroom_hallway.place_item(keys)

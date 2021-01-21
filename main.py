@@ -7,86 +7,31 @@ from rpginfo import RPGInfo
 
 ## ------- TO DO LIST -------------- ##
 """
-- Create items.  
 - Create stats for characters and items
 - Have stats work almost like skill rolls when trying to identify, fight, etc
 - Maybe? Allow for clothing and armor
--
 
 """
 ## --------------------------------- ##
 
 
 
-# ### Room Creation ###
-# kitchen = Room("Kitchen")
-# kitchen.set_description("Your standard kitchen.  It's smaller than you'd like.")
+### Room Creation ###
 
-# dining_hall = Room("Dining hall")
-# dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table is a candle and a few matches.")
-
-# dining_hall_to_ballroom_hallway = Room("Hallway")
-# dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")
-
-# ballroom = Room("Ballroom")
-# ballroom.set_description("Despite the name, there are very few balls present.  Light orange marble covers the circular dance floor, with white pillars standing along the outer edge.")
-
-
-# ### Mapping Out the Rooms. ###
-# ## link_room() connects one room to another room in the direction of wherever the parameter room is.  Room must first be declared as a Room() object
-# kitchen.link_room(dining_hall, "south") ## Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
-# dining_hall.link_room(kitchen, "north")
-# dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
-# dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
-# dining_hall_to_ballroom_hallway.link_room(ballroom, "west")
-# ballroom.link_room(dining_hall_to_ballroom_hallway, "east")
-
+### Mapping Out the Rooms. ###
 
 ### Creating the Characters and Enemies ###
-# dave = Character("Dave", "A zombie with a terrible dairy allergy.")
-# dave.set_conversation("Brrlgrh... rgrhl... hello...")
-# dave.set_weakness("cheese")
-rm.dining_hall.set_character(char.dave)
-rm.ballroom.set_character(char.gorgo)
-
 
 ### Creating and Placing Items ###
-kitchen_counter = Item("kitchen counter")
-kitchen_counter.set_description("A white countertop with small black drops of paint deliberately placed across it.\n"
-                "You see a butter knife, a slice of cheese, and a metal pan.")
-
-butter_knife = Weapon("butter knife", 1)
-butter_knife.set_description("A small, barely jagged knife.  Best used to spread condiments.")
 
 
-cheese = Item("cheese")
-cheese.set_description("A single slice of yellow cheese.  I doubt this will come in handy.")
-rm.kitchen.place_item(cheese)
 
-dinner_table = Furniture("table")
-dinner_table.set_description("A grayed, wooden table that can seat about 6 people.\n"
-                "On the edge, you see a box of matches and large, yellow candle.")
-rm.dining_hall.place_item(dinner_table)
-
-candle = Item("candle")
-candle.set_description("A half-melted candle on a brass candleholder.")
-dinner_table.add_item(candle)
-
-matches = Item("matches")
-matches.set_description("A small red and white box containing 4 matches.")
-rm.dining_hall.place_item(matches)
-
-keys = Item("keys")
-keys.set_description("A bunch of keys held together by a large, rusty keyring.")
-rm.dining_hall_to_ballroom_hallway.place_item(keys)
-
-
-######################################################
-################### MAIN GAME ########################
-######################################################
+###############################################################
+################### MAIN GAME #################################
+###############################################################
 
 ### Game Variable Setup ###
-current_room = rm.dining_hall  ## Where you start off.
+current_room = rm.kitchen  ## Where you start off.
 player = Player()
 inventory = player.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
 
@@ -95,9 +40,8 @@ main_game = RPGInfo("Untitled Game")  ## Creates an instance of the title screen
 main_game.welcome()  
 
 
+
 ### Main Game/Command Loop ###
-
-
 # This baby keeps the game going while you're alive.
 while dead == False:
         print("\n===============================================================================\n\n")
@@ -181,22 +125,9 @@ while dead == False:
                 player.check_inventory()
 
         elif command.startswith("take") is True:
-                
-                ### Holding onto this code for a bit while I make sure its predecessor works
-                #for x in items_in_room:  # For checking to see what items are in this room.
-                #        print(x.get_name())
-                #print(current_room.items_in_room)
-                
-                # items_in_room_list = {x.get_name() for x in items_in_room}
-                # print(items_in_room_list)
 
-                # items_in_room_dict = {}
-                # for item in items_in_room:
-                #         items_in_room_dict[str(item.get_name())] = item
-                
                 if items_in_room is not None:
                         item_taken = command[5:]  # This grabs the text after "take " to check l
-
                         if item_taken in items_in_room:
                                 if items_in_room[item_taken].can_put_in_inventory == True:
                                         print(f"You add {item_taken} to your inventory.") 
@@ -221,9 +152,8 @@ while dead == False:
                 # Items are placed in different dicts depending on if they're in your inentory or still in the room.
                 # This if else statement prints the descriptions for these items.
                 if object_looked_at in items_in_room:
-                        #print(current_room.items_in_room[object_looked_at].get_description())
                         current_room.describe_item(object_looked_at)
-                        print(current_room.items_in_room[object_looked_at])   # Will be removed; used for testing.
+                        #print(current_room.items_in_room[object_looked_at])   # Will be removed; used for testing.
 
                 elif object_looked_at in inventory:
                         inventory[object_looked_at].get_description()
@@ -233,8 +163,4 @@ while dead == False:
 
         else: 
                 print(f"Sorry, I did not understand the command: '{command}'")
-                try:
-                        dinner_table.show_items()
-                except:
-                        continue
 

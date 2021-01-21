@@ -75,7 +75,7 @@ kitchen = Room("Kitchen")
 kitchen.set_description("A small, beige space with a fridge and a sink.  Various items are scattered on the counter.")
 
 dining_hall = Room("Dining hall")
-dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table is a candle and a few matches.")
+dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table are a candle and a few matches.")
 
 dining_hall_to_ballroom_hallway = Room("Hallway")
 dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")

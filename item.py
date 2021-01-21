@@ -47,6 +47,10 @@ fridge = Item("fridge")
 fridge.set_description("You don't have time to eat right now.")
 rm.kitchen.place_item(fridge)
 
+sink = Furniture("sink")
+sink.set_description("What, you need to wash your hands?  Get on with the game.")
+rm.kitchen.place_item(sink)
+
 butter_knife = Weapon("butter knife", 1)  # second argument is its damage.
 butter_knife.set_description("A small, barely jagged knife.  Best used to spread condiments.")
 rm.kitchen.place_item(butter_knife)

@@ -1,4 +1,4 @@
-import item 
+#import item 
 
 class Room():
 
@@ -72,7 +72,8 @@ class Room():
 
 ### Room Creation ###
 kitchen = Room("Kitchen")
-kitchen.set_description("A small, beige space with a fridge and a sink.  Various items are scattered on the counter.")
+kitchen.set_description("A small room with just enough space for a fridge and a sink.  The beige walls and yellow floor tile make you nauseous.  "
+    "Various items are scattered on the counter.")
 
 dining_hall = Room("Dining hall")
 dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table are a candle and a few matches.")

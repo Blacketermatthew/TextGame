@@ -53,7 +53,7 @@ while dead == False:
         if inhabitant is not None:   
                 inhabitant.describe()
 
-        print("\n\nCommands available: [ Greet | Insult | Identify | Fight | Look At | Take | Inventory ]")
+        print("\n\nCommands available: [ Greet | Insult | Identify | Fight | Look At ___ | Take ___ | Inventory ]")
         command = (input("> ").lower().rstrip())
         print("\n\n\n\n===============================================================================\n")
 

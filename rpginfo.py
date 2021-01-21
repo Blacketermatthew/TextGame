@@ -6,7 +6,7 @@ class RPGInfo():
 
     def welcome(self):
         #print("Welcome to " + self.title)
-        welcome_banner = pyfiglet.figlet_format("WELCOME")
+        welcome_banner = pyfiglet.figlet_format("GAME START")
         print("\n", "\n", welcome_banner)
         print("\nInstructions: Type north, south, east, or west to navigate.  \
             \nUse the commands available to interact with the world.")

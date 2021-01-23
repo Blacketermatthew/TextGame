@@ -10,6 +10,7 @@ from rpginfo import RPGInfo
 - Create stats for characters and items
 - Have stats work almost like skill rolls when trying to identify, fight, etc
 - Maybe? Allow for clothing and armor
+- Dialogue tree?
 
 """
 ## --------------------------------- ##
@@ -31,7 +32,7 @@ from rpginfo import RPGInfo
 ###############################################################
 
 ### Game Variable Setup ###
-current_room = rm.kitchen  ## Where you start off.
+current_room = rm.living_room  ## Where you start off.
 player = Player()
 inventory = player.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
 
@@ -50,7 +51,7 @@ while dead == False:
         inhabitant = current_room.get_character()
         items_in_room = current_room.get_all_items_in_room()
 
-        if inhabitant is not None:   
+        if inhabitant is not None:
                 inhabitant.describe()
 
         print("\n\nCommands available: [ Greet | Insult | Identify | Fight | Look At ___ | Take ___ | Inventory ]")
@@ -159,6 +160,15 @@ while dead == False:
                 if object_looked_at in items_in_room:
                         current_room.describe_item(object_looked_at)
                         #print(current_room.items_in_room[object_looked_at])   # Will be removed; used for testing.
+
+                        cash_found = items_in_room[object_looked_at].money_contained 
+                        if items_in_room[object_looked_at].__class__.__name__ == "Furniture" and cash_found > 0:
+                                # print(f"You found ${cash_found}!")
+                                # player.money_in_hand += cash_found
+                                # cash_found = 0
+                                # print(f"Total cash: ${player.money_in_hand}")   
+                                # print(cash_found)
+                                items_in_room[object_looked_at].take_money()
 
                 elif object_looked_at in inventory:
                         inventory[object_looked_at].get_description()

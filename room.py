@@ -52,7 +52,7 @@ class Room():
     def get_details(self):
         print(self.name)
         print("-------------------")
-        print(self.description)
+        print(self.description, "\n")
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
             print("The " + room.get_name() + " is " + direction)
@@ -71,27 +71,40 @@ class Room():
 
 
 ### Room Creation ###
+
 kitchen = Room("Kitchen")
-kitchen.set_description("A small room with just enough space for a fridge and a sink.  The beige walls and yellow floor tile make you nauseous.  "
+kitchen.set_description("A small room with just enough space for a fridge and a sink.  The beige walls and yellow floor tile make you nauseous.\n"
     "Various items are scattered on the counter.")
 
 dining_hall = Room("Dining hall")
 dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table are a candle and a few matches.")
 
+living_room = Room("Living room")
+living_room.set_description("Your safe space.  Your old, beat-up couch has seen better days. Haven't we all.\n"
+    "It looks like all your stuff on your coffee table has been moved or knocked over.")
+
 dining_hall_to_ballroom_hallway = Room("Hallway")
 dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")
 
 ballroom = Room("Ballroom")
-ballroom.set_description("Despite the name, there are very few balls present.  Light orange marble covers the circular dance floor, with white pillars standing along the outer edge.")
+ballroom.set_description("Despite the name, there are very few balls present.\n"
+    "Light orange marble covers the circular dance floor, with white pillars standing along the outer edge.")
 
 
 
 
 ### Mapping Out the Rooms. ###
+
 ## link_room() connects one room to another room in the direction of wherever the parameter room is.  Room must first be declared as a Room() object
 kitchen.link_room(dining_hall, "south") ## Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
+
 dining_hall.link_room(kitchen, "north")
 dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
+dining_hall.link_room(living_room, "east")
+
+living_room.link_room(dining_hall, "west")
+
 dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
 dining_hall_to_ballroom_hallway.link_room(ballroom, "west")
+
 ballroom.link_room(dining_hall_to_ballroom_hallway, "east")

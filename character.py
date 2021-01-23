@@ -15,9 +15,9 @@ class Character():
     # Describe this character
     def describe(self):
         if self.previously_encountered == True:
-            print(self.name + " is here!")
+            print(f"\n{self.name} is here!")
         else: 
-            print("A stranger is in here!")
+            print("\nA stranger is in here!")
 
     # Set what this character will say when talked to
     def set_conversation(self, conversation):

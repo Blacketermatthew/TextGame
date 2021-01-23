@@ -26,9 +26,24 @@ class Weapon(Item):
         self.damage = damage  # Damage can be 0-100
 
 class Furniture(Item):
-    def __init__(self, name):
+    def __init__(self, name, money_contained=0):
         super().__init__(name)
         self.can_put_in_inventory = False
+        self.money_contained = money_contained  # This is 
+
+
+    # NEEDS TO BE WORKED ON.  PUT PLAYER FROM MAIN INTO PLAYER FILE
+    def take_money(self):
+        if self.money_contained > 0:
+            print(f"You found ${self.money_contained}!")
+            player.money_in_hand += self.money_contained
+            self.money_contained = 0
+            print(f"Total cash: ${player.money_in_hand}")   
+            print(self.money_contained)
+        
+        else:
+            pass
+
 
 
 ### ------------------------------------------------------ ###
@@ -68,7 +83,7 @@ rm.kitchen.place_item(cheese)
 
 dinner_table = Furniture("table")
 dinner_table.set_description("A grayed, wooden table that can seat about 6 people.\n"
-                "On the edge, you see a box of matches and large, yellow candle.")
+                "On one end, you see a box of matches and yellow candle.")
 rm.dining_hall.place_item(dinner_table)
 
 candle = Item("candle")
@@ -83,5 +98,18 @@ rm.dining_hall.place_item(matches)
 # Dining hall to ballroom hallway
 
 keys = Item("keys")
-keys.set_description("A bunch of keys held together by a large, rusty keyring.")
+keys.set_description("Three keys held together by a rusty keyring.")
 rm.dining_hall_to_ballroom_hallway.place_item(keys)
+
+
+# Living room
+
+couch = Furniture("couch", money_contained=1)
+couch.set_description("A dark gold hand-me-down that no longer provides any comfort, but you can't bring yourself to replace it.  \n"
+    "You find a couple dollars under the cushions!")
+rm.living_room.place_item(couch)
+
+coffee_table = Furniture("coffee table", money_contained=20)
+coffee_table.set_description("An oblong table you got at a thrift store years ago.")
+
+

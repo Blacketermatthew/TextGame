@@ -81,7 +81,7 @@ dining_hall.set_description("Where we go to eat.  A table centers the room.  Ato
 
 living_room = Room("Living room")
 living_room.set_description("Your safe space.  Your old, beat-up couch has seen better days. Haven't we all.\n"
-    "It looks like all your stuff on your coffee table has been moved or knocked over.")
+    "It looks like all your stuff on your coffee table has been moved around or knocked over.")
 
 dining_hall_to_ballroom_hallway = Room("Hallway")
 dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")
@@ -89,8 +89,6 @@ dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At th
 ballroom = Room("Ballroom")
 ballroom.set_description("Despite the name, there are very few balls present.\n"
     "Light orange marble covers the circular dance floor, with white pillars standing along the outer edge.")
-
-
 
 
 ### Mapping Out the Rooms. ###

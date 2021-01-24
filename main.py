@@ -159,10 +159,11 @@ while dead == False:
                 # This if else statement prints the descriptions for these items.
                 if object_looked_at in items_in_room:
                         current_room.describe_item(object_looked_at)
-
-                        cash_found = items_in_room[object_looked_at].money_contained 
-                        if items_in_room[object_looked_at].__class__.__name__ == "Furniture" and cash_found > 0:
-                                items_in_room[object_looked_at].take_money()
+                        
+                        if items_in_room[object_looked_at].__class__.__name__ == "Furniture":
+                                cash_found = items_in_room[object_looked_at].money_contained 
+                                if cash_found > 0:
+                                        items_in_room[object_looked_at].take_money()
 
                 elif object_looked_at in inventory:
                         inventory[object_looked_at].get_description()

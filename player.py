@@ -14,3 +14,5 @@ class Player():
             print(item)
             #print(self.inventory[item].describe())
         
+
+you = Player()

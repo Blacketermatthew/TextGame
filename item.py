@@ -1,4 +1,6 @@
 import room as rm
+import player
+
 
 class Item():
 
@@ -29,17 +31,17 @@ class Furniture(Item):
     def __init__(self, name, money_contained=0):
         super().__init__(name)
         self.can_put_in_inventory = False
-        self.money_contained = money_contained  # This is 
+        self.money_contained = money_contained  # Sometimes items have cash in/on them
 
 
     # NEEDS TO BE WORKED ON.  PUT PLAYER FROM MAIN INTO PLAYER FILE
     def take_money(self):
         if self.money_contained > 0:
             print(f"You found ${self.money_contained}!")
-            player.money_in_hand += self.money_contained
-            self.money_contained = 0
-            print(f"Total cash: ${player.money_in_hand}")   
-            print(self.money_contained)
+            
+            player.you.money_in_hand += self.money_contained
+            self.money_contained = 0 # Removes the money from the item so you can't continuously spawn cash.
+            print(f"Total cash: ${player.you.money_in_hand}")   
         
         else:
             pass
@@ -104,12 +106,12 @@ rm.dining_hall_to_ballroom_hallway.place_item(keys)
 
 # Living room
 
-couch = Furniture("couch", money_contained=1)
+couch = Furniture("couch", money_contained=1) # money_contained is solely for furniture items
 couch.set_description("A dark gold hand-me-down that no longer provides any comfort, but you can't bring yourself to replace it.  \n"
-    "You find a couple dollars under the cushions!")
+    "Home to many ants that sustain themselves solely off my crumbs.")
 rm.living_room.place_item(couch)
 
 coffee_table = Furniture("coffee table", money_contained=20)
 coffee_table.set_description("An oblong table you got at a thrift store years ago.")
-
+rm.living_room.place_item(coffee_table)
 

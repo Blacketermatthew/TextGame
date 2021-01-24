@@ -8,8 +8,9 @@ class RPGInfo():
         #print("Welcome to " + self.title)
         welcome_banner = pyfiglet.figlet_format("GAME START")
         print("\n", "\n", welcome_banner)
-        print("\nInstructions: Type north, south, east, or west to navigate.  \
-            \nUse the commands available to interact with the world.")
+        print("\nInstructions: Type north, south, east, or west to navigate.\n"
+            "Use the commands available to interact with the world.\n\n"
+            "Current objective: Explore.\n")
 
 
 

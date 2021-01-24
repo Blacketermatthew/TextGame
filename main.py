@@ -1,7 +1,7 @@
-from player import Player
+import player
 import room as rm
 from item import Item, Furniture, Weapon
-import character as char
+#import character as char
 from character import Character, Enemy
 from rpginfo import RPGInfo
 
@@ -33,8 +33,8 @@ from rpginfo import RPGInfo
 
 ### Game Variable Setup ###
 current_room = rm.living_room  ## Where you start off.
-player = Player()
-inventory = player.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
+#player = Player()
+inventory = player.you.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
 
 dead = False  ## Gets turned True once you die
 main_game = RPGInfo("Untitled Game")  ## Creates an instance of the title screen
@@ -128,7 +128,7 @@ while dead == False:
 
         elif command == "inventory":
 
-                player.check_inventory()
+                player.you.check_inventory()
 
         elif command.startswith("take") is True:
 
@@ -159,20 +159,14 @@ while dead == False:
                 # This if else statement prints the descriptions for these items.
                 if object_looked_at in items_in_room:
                         current_room.describe_item(object_looked_at)
-                        #print(current_room.items_in_room[object_looked_at])   # Will be removed; used for testing.
 
                         cash_found = items_in_room[object_looked_at].money_contained 
                         if items_in_room[object_looked_at].__class__.__name__ == "Furniture" and cash_found > 0:
-                                # print(f"You found ${cash_found}!")
-                                # player.money_in_hand += cash_found
-                                # cash_found = 0
-                                # print(f"Total cash: ${player.money_in_hand}")   
-                                # print(cash_found)
                                 items_in_room[object_looked_at].take_money()
 
                 elif object_looked_at in inventory:
                         inventory[object_looked_at].get_description()
-                        #print(inventory[object_looked_at])  # Will be removed; used for testing.
+                        
                 else:
                         print("What would you like to look at?")
 

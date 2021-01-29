@@ -32,7 +32,7 @@ from rpginfo import RPGInfo
 ###############################################################
 
 ### Game Variable Setup ###
-current_room = rm.living_room  ## Where you start off.
+current_room = rm.study  ## Where you start off.
 #player = Player()
 inventory = player.you.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
 
@@ -146,7 +146,7 @@ while dead == False:
                         elif item_taken in inventory:
                                 print("You've already added that to your inventory.")
                         else:
-                                 print(f"I don't think I see '{item_taken}' in here.  What would you like to take?")
+                                 print(f"I'm not sure that I see '{item_taken}' in here.  What would you like to take?")
 
                 elif items_in_room is None:
                         print("There is nothing in the room to take")
@@ -169,7 +169,7 @@ while dead == False:
                         inventory[object_looked_at].get_description()
                         
                 else:
-                        print("What would you like to look at?")
+                        print(f"I'm not sure that I see '{object_looked_at}'.  What would you like to look at?")
 
         else: 
                 print(f"Sorry, I did not understand the command: '{command}'")

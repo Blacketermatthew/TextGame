@@ -26,7 +26,7 @@ class Item():
 
 
 class Weapon(Item):
-   def __init__(self, name, damage):
+    def __init__(self, name, damage):
         super().__init__(name)
         self.damage = damage  # Damage can be 0-100
 
@@ -93,7 +93,7 @@ rm.kitchen.place_item(cheese)
 
 dinner_table = Furniture("table")
 dinner_table.set_description("A grayed, wooden table that can seat about 6 people.\n"
-                "On one end, you see a box of matches and yellow candle.")
+                "On one end, you see a box of matches and a yellow candle.")
 rm.dining_hall.place_item(dinner_table)
 
 candle = Item("candle")
@@ -117,16 +117,16 @@ rm.dining_hall_to_ballroom_hallway.place_item(keys)
 couch = Furniture("couch", money_contained=1) # money_contained is solely for furniture items
 couch.set_description("A dark gold hand-me-down that no longer provides any comfort, but you're way too poor to afford a replacement.  \n"
     "Home to many ants that have survived solely off old crumbs.")
-rm.living_room.place_item(couch)
+rm.study.place_item(couch)
 
-coffee_table = Furniture("coffee table", money_contained=20)
-coffee_table.set_description("An oblong table you got at a thrift store years ago.\n"
+desk = Furniture("desk", money_contained=20)
+desk.set_description("An oblong table you got at a thrift store years ago.\n"
     "All the junk on it has been rifled through, but nothing looks to be missing.\n"
     "A red key you've never seen before is among the mess.")
-rm.living_room.place_item(coffee_table)
+rm.study.place_item(desk)
 
 red_key = Item("red key")
 red_key.set_description("A tomato-colored house key.  Who knows what it opens.")
-rm.living_room.place_item(red_key)
+rm.study.place_item(red_key)
 
 

@@ -79,9 +79,9 @@ kitchen.set_description("A small room with just enough space for a fridge and a 
 dining_hall = Room("Dining hall")
 dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table are a candle and a few matches.")
 
-living_room = Room("Living room")
-living_room.set_description("Your safe space.  Your old, beat-up couch has seen better days. Haven't we all.\n"
-    "It looks like all your stuff on your coffee table has been moved around or knocked over.")
+study = Room("Study")
+study.set_description("Your safe space.  Your old, beat-up couch has seen better days. Haven't we all.\n"
+    "It looks like all your stuff on your desk has been moved around or knocked over.")
 
 dining_hall_to_ballroom_hallway = Room("Hallway")
 dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")
@@ -98,9 +98,9 @@ kitchen.link_room(dining_hall, "south") ## Makes the dining hall south of the ki
 
 dining_hall.link_room(kitchen, "north")
 dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
-dining_hall.link_room(living_room, "east")
+dining_hall.link_room(study, "east")
 
-living_room.link_room(dining_hall, "west")
+study.link_room(dining_hall, "west")
 
 dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
 dining_hall_to_ballroom_hallway.link_room(ballroom, "west")

@@ -112,7 +112,7 @@ keys.set_description("Three keys held together by a rusty keyring.")
 rm.dining_hall_to_ballroom_hallway.place_item(keys)
 
 
-# Living room
+# Study
 
 couch = Furniture("couch", money_contained=1) # money_contained is solely for furniture items
 couch.set_description("A dark gold hand-me-down that no longer provides any comfort, but you're way too poor to afford a replacement.  \n"
@@ -130,3 +130,24 @@ red_key.set_description("A tomato-colored house key.  Who knows what it opens.")
 rm.study.place_item(red_key)
 
 
+# Foyer
+
+key_hooks = Furniture("key hooks")
+key_hooks.set_description("Four shiny, metal hooks.  You often forget these even exist.\n"
+    "A blue key you've never seen before is hanging from one of the hooks.")
+rm.foyer.place_item(key_hooks)
+
+blue_key = Item("blue key")
+blue_key.set_description("A cobalt-colored house key.")
+rm.foyer.place_item(blue_key)
+
+
+# Upstairs hallway
+poster = Item("poster")
+poster.set_description("A poster from the first concert you ever went to.  It somehow escaped both the concert and the crash to the floor in pristine condition.\n"
+    "You see something inside the frame.  It's a yellow key!")
+rm.upstairs_hallway.place_item(poster)
+
+yellow_key = Item("yellow key")
+yellow_key.set_description("A sunflower-colored house key.  You don't even own any sunflower-colored items this could belong to.")
+rm.upstairs_hallway.place_item(yellow_key)

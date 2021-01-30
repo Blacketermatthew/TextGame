@@ -1,4 +1,5 @@
-import player
+#import player
+from player import you
 import room as rm
 from item import Item, Furniture, Weapon
 #import character as char
@@ -34,7 +35,7 @@ from rpginfo import RPGInfo
 ### Game Variable Setup ###
 current_room = rm.study  ## Where you start off.
 #player = Player()
-inventory = player.you.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
+inventory = you.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
 
 dead = False  ## Gets turned True once you die
 main_game = RPGInfo("Untitled Game")  ## Creates an instance of the title screen
@@ -128,7 +129,7 @@ while dead == False:
 
         elif command == "inventory":
 
-                player.you.check_inventory()
+                you.check_inventory()
 
         elif command.startswith("take") is True:
 

@@ -102,3 +102,4 @@ rm.dining_hall.set_character(dave)
 gorgo = Enemy("Gorgo", "A bulbous, gurgling bipedal creature with six bony arms.  Smells like trash.")
 gorgo.set_weakness("flaming sword")
 rm.ballroom.set_character(gorgo)
+

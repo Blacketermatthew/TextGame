@@ -72,16 +72,23 @@ class Room():
 
 ### Room Creation ###
 
+dining_hall = Room("Dining hall")
+dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table are a candle and a few matches.")
+
 kitchen = Room("Kitchen")
 kitchen.set_description("A small room with just enough space for a fridge and a sink.  The beige walls and yellow floor tile make you nauseous.\n"
     "Various items are scattered on the counter.")
 
-dining_hall = Room("Dining hall")
-dining_hall.set_description("Where we go to eat.  A table centers the room.  Atop the table are a candle and a few matches.")
+foyer = Room("Foyer")
+foyer.set_description("A room whose presence alone just screams \"upper class.\"  Mainly used for hanging stuff on the key hooks and coat rack in there.")
 
 study = Room("Study")
-study.set_description("Your safe space.  Your old, beat-up couch has seen better days. Haven't we all.\n"
+study.set_description("Your safe space.  The old, beat-up couch in here has seen better days. Haven't we all.\n"
     "It looks like all your stuff on your desk has been moved around or knocked over.")
+
+upstairs_hallway = Room("Upstairs hallway")
+upstairs_hallway.set_description("A small hallway with white walls and a surprisingly high amount of warm, natural light coming from downstairs.\n"
+    "A cat's paradise, they'd say.  There's an old framed poster that's fallen off the wall and onto the floor.")
 
 dining_hall_to_ballroom_hallway = Room("Hallway")
 dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")
@@ -97,10 +104,16 @@ ballroom.set_description("Despite the name, there are very few balls present.\n"
 kitchen.link_room(dining_hall, "south") ## Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
 
 dining_hall.link_room(kitchen, "north")
+dining_hall.link_room(foyer, "south")
 dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
 dining_hall.link_room(study, "east")
 
 study.link_room(dining_hall, "west")
+
+foyer.link_room(dining_hall, "north")
+foyer.link_room(upstairs_hallway, "east")
+
+upstairs_hallway.link_room(foyer, "west")
 
 dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
 dining_hall_to_ballroom_hallway.link_room(ballroom, "west")

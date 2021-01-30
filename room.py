@@ -90,12 +90,12 @@ upstairs_hallway = Room("Upstairs hallway")
 upstairs_hallway.set_description("A small hallway with white walls and a surprisingly high amount of warm, natural light coming from downstairs.\n"
     "A cat's paradise, they'd say.  There's an old framed poster that's fallen off the wall and onto the floor.")
 
-dining_hall_to_ballroom_hallway = Room("Hallway")
-dining_hall_to_ballroom_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")
+dining_hall_to_garage_hallway = Room("Hallway")
+dining_hall_to_garage_hallway.set_description("A short, narrow hallway.  At the end, two large doors.")
 
-ballroom = Room("Ballroom")
-ballroom.set_description("Despite the name, there are very few balls present.\n"
-    "Light orange marble covers the circular dance floor, with white pillars standing along the outer edge.")
+garage = Room("Garage")
+garage.set_description("Mostly used for storage.  If you pushed all the random junk to one side of the room, you could MAYBE fit a small sedan in here.\n"
+    "The only clean area in here is your pride and joy, your workbench.")
 
 
 ### Mapping Out the Rooms. ###
@@ -105,7 +105,7 @@ kitchen.link_room(dining_hall, "south") ## Makes the dining hall south of the ki
 
 dining_hall.link_room(kitchen, "north")
 dining_hall.link_room(foyer, "south")
-dining_hall.link_room(dining_hall_to_ballroom_hallway, "west")
+dining_hall.link_room(dining_hall_to_garage_hallway, "west")
 dining_hall.link_room(study, "east")
 
 study.link_room(dining_hall, "west")
@@ -115,7 +115,7 @@ foyer.link_room(upstairs_hallway, "east")
 
 upstairs_hallway.link_room(foyer, "west")
 
-dining_hall_to_ballroom_hallway.link_room(dining_hall, "east")
-dining_hall_to_ballroom_hallway.link_room(ballroom, "west")
+dining_hall_to_garage_hallway.link_room(dining_hall, "east")
+dining_hall_to_garage_hallway.link_room(garage, "west")
 
-ballroom.link_room(dining_hall_to_ballroom_hallway, "east")
+garage.link_room(dining_hall_to_garage_hallway, "east")

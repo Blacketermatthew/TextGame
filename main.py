@@ -10,8 +10,7 @@ from rpginfo import RPGInfo
 """
 - Create stats for characters and items
 - Have stats work almost like skill rolls when trying to identify, fight, etc
-- Maybe? Allow for clothing and armor
-- Dialogue tree?
+
 
 """
 ## --------------------------------- ##

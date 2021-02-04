@@ -1,5 +1,6 @@
 from random import randint
 import room as rm
+from player import you
 
 class Character():
 
@@ -42,10 +43,13 @@ class Character():
     # Fight with this character
     def fight(self, combat_item):
         self.previously_encountered = True
-        if self.insult_count >= 3:
+        if self.insult_count >= 2:
             if combat_item == self.weakness:
-                print("You fend " + self.name + " off with the " + combat_item)
-                return True
+                if combat_item in you.inventory:
+                    print("You fend " + self.name + " off with the " + combat_item)
+                    return True
+                print(f"You don't have that item in your inventory.  You were defenseless against {self.name}.")
+                return False
             else:
                 print(self.name + " crushes you like the nerd you are")
                 return False
@@ -55,18 +59,23 @@ class Character():
     # Insult this character
     def insult(self):
         self.previously_encountered = True
+        self.insult_count += 1
         insult_responses = { 
             0: "HEY.  Take it easy, pal.", 
             1: "Back off.  I'm warning you.", 
             2: "You're triggering me!!", 
             3: "You'll wish you never said that.",
-            4: "C'mon, dude.  Just leave me be.",
-            5: "That's a really upsetting this to hear.",
-            6: "DUDE."
+            4: "C'mon.  Just leave me be!",
+            5: "That's a really upsetting thing to hear.",
+            6: "DUDE.",
+            7: "That was uncalled for.",
+            8: "Wow.",
+            9: "As if I didn't already suffer from enough self-esteem issues."
             }
 
+        print(f"Insult count: {self.insult_count}")
         print("[You insult " + self.name + "]")
-        print("[" + self.name + " says]: " + insult_responses[randint(0,6)])   
+        print("[" + self.name + " says]: " + insult_responses[randint(0,9)])   
 
 class Enemy(Character):
     def __init__(self, char_name, char_description):
@@ -82,13 +91,15 @@ class Enemy(Character):
         print("[Weakness: " + self.weakness + "]")
 
     def fight(self, combat_item):
-        self.previously_encountered = True
-        if combat_item == self.weakness:
-            print("You fend " + self.name + " off with the " + combat_item)
-            return True
-        else:
-            print(self.name + " crushes you like the nerd you are")
-            return False
+        self.insult_count = 2
+        return super(Enemy, self).fight(combat_item)  # This uses the same fight method from Character.  A fight will immediately start now (insult count = 3)
+
+        # if combat_item == self.weakness and combat_item in you.inventory:
+        #     print("You fend " + self.name + " off with the " + combat_item)
+        #     return True
+        # else:
+        #     print(self.name + " crushes you like the nerd you are")
+        #     return False
     
 ### ------------------------------------------------------ ###
 

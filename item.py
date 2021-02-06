@@ -107,9 +107,6 @@ rm.dining_hall.place_item(matches)
 
 # Dining hall to ballroom hallway
 
-keys = Item("keys")
-keys.set_description("Three keys held together by a rusty keyring.")
-rm.dining_hall_to_ballroom_hallway.place_item(keys)
 
 
 # Study

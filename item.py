@@ -105,16 +105,9 @@ matches.set_description("A small red and white box containing 4 matches.")
 rm.dining_hall.place_item(matches)
 
 
-# Dining hall to garage hallway
-
-keys = Item("keys")
-keys.set_description("Three keys held together by a rusty keyring.")
-rm.dining_hall_to_garage_hallway.place_item(keys)
+# Dining hall to ballroom hallway
 
 
-# Garage
-
-### NEED TO MAKE WORKBENCH
 
 # Study
 

@@ -107,9 +107,12 @@ rm.dining_hall.place_item(matches)
 
 # Dining hall to garage hallway
 
+<<<<<<< HEAD
 keys = Item("keys")
 keys.set_description("Three keys held together by a rusty keyring.")
 rm.dining_hall_to_garage_hallway.place_item(keys)
+=======
+>>>>>>> 3d331e8a80de676cf544c72e1f338621156f5ec1
 
 
 # Garage

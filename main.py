@@ -10,8 +10,7 @@ from rpginfo import RPGInfo
 """
 - Create stats for characters and items
 - Have stats work almost like skill rolls when trying to identify, fight, etc
-- Maybe? Allow for clothing and armor
-- Dialogue tree?
+
 
 """
 ## --------------------------------- ##
@@ -61,17 +60,45 @@ while dead == False:
                 items_in_room = current_room.get_all_items_in_room()
 
                 if inhabitant is not None:
+<<<<<<< HEAD
                         inhabitant.describe()
+=======
+<<<<<<< HEAD
+                        inhabitant.greet()
+                elif inhabitant is None:
+                        print("There is nobody here to talk to.")
+
+        elif command == "fight":
+
+                if inhabitant is not None and isinstance(inhabitant, Enemy):
+                        you.check_inventory()
+                        fight_with = input("\n\nWhat will you fight with? : ")
+                        fight_outcome = inhabitant.fight(fight_with)
+                        if fight_outcome == True:
+                                current_room.set_character(None)
+                        elif fight_outcome == False:
+                                print("\nYou have been defeated.  GAME OVER")
+                                dead = True
+=======
+                        inhabitant.describe()
+>>>>>>> 3d331e8a80de676cf544c72e1f338621156f5ec1
+>>>>>>> 4f2bc797305e7db984bcec48866bd51f79be5c21
 
                 print("\n\nCommands available: [ Greet | Insult | Identify | Fight | Look At ___ | Take ___ | Inventory ]")
                 command = (input("> ").lower().rstrip())
                 print("\n\n\n\n===============================================================================\n")
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> 4f2bc797305e7db984bcec48866bd51f79be5c21
                 if command in ["north", "south", "east", "west"]:
 
                         current_room = current_room.move(command)
 
+<<<<<<< HEAD
                 elif command == "greet": 
 
                         if inhabitant is not None:
@@ -82,6 +109,29 @@ while dead == False:
                 elif command == "fight":
 
                         if inhabitant is not None and isinstance(inhabitant, Enemy):
+=======
+<<<<<<< HEAD
+                # If you insult somebody 3+ times, they'll attack you.  Insulting an enemy once will cause them to immediately attack you.
+                if inhabitant is not None:
+                        if inhabitant.__class__.__name__ == "Enemy": 
+                                inhabitant.insult_count = 2   
+
+                        if inhabitant.insult_count >= 2:
+                                you.check_inventory()
+                                print(f"\n\n{inhabitant.name}, now angry, is charging towards you.")
+=======
+                elif command == "greet": 
+
+                        if inhabitant is not None:
+                                inhabitant.greet()
+                        elif inhabitant is None:
+                                print("There is nobody here to talk to.")
+
+                elif command == "fight":
+
+                        if inhabitant is not None and isinstance(inhabitant, Enemy):
+>>>>>>> 3d331e8a80de676cf544c72e1f338621156f5ec1
+>>>>>>> 4f2bc797305e7db984bcec48866bd51f79be5c21
                                 fight_with = input("What will you fight with? : ")
                                 fight_outcome = inhabitant.fight(fight_with)
                                 if fight_outcome == True:
@@ -89,13 +139,22 @@ while dead == False:
                                 elif fight_outcome == False:
                                         print("\nYou have been defeated.  GAME OVER")
                                         dead = True
+                        else:
+                                inhabitant.insult()  
 
                         elif inhabitant is not None and isinstance(inhabitant, Character):
                                 inhabitant.fight(None)
+<<<<<<< HEAD
 
                         elif inhabitant is None:
                                 print("There is nobody here to fight.")
 
+=======
+
+                        elif inhabitant is None:
+                                print("There is nobody here to fight.")
+
+>>>>>>> 4f2bc797305e7db984bcec48866bd51f79be5c21
                         else:
                                 print("You are currently unable to fight anybody.")
                         

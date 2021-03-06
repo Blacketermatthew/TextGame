@@ -5,7 +5,7 @@ class Player():
 
     def __init__(self):
         self.strength = 10  # Will be changed, I'm sure.
-        self.inventory = {} 
+        self.inventory = {}  # {}  MAYBE?
         self.money_in_hand = 0
 
     def check_inventory(self):

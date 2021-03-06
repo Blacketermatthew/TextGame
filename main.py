@@ -54,6 +54,7 @@ while dead == False:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if inhabitant is not None:
 <<<<<<< HEAD
                         inhabitant.describe()
@@ -120,9 +121,18 @@ while dead == False:
 =======
         if command in ["north", "south", "east", "west"]:
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
+=======
+        if inhabitant is not None:
+                inhabitant.describe()
+
+        print("\n\nCommands available: [ Greet | Insult | Identify | Fight | Look At ___ | Take ___ | Inventory ]")
+        command = (input("> ").lower().rstrip())
+        print("\n\n\n\n===============================================================================\n")
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
 
                 current_room = current_room.move(command)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 elif command == "greet": 
@@ -188,6 +198,13 @@ while dead == False:
 =======
         elif command == "greet": 
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
+=======
+        if command in ["north", "south", "east", "west"]:
+
+                current_room = current_room.move(command)
+
+        elif command == "greet": 
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
 
                 if inhabitant is not None:
                         inhabitant.greet()
@@ -217,6 +234,7 @@ while dead == False:
                 
         elif command == "identify":
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                         if inhabitant is not None and isinstance(inhabitant, Enemy):
 >>>>>>> 3d331e8a80de676cf544c72e1f338621156f5ec1
@@ -248,6 +266,8 @@ while dead == False:
         elif command == "identify":
 
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
+=======
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
                 if inhabitant is not None:
                         if inhabitant.__class__.__name__ == "Enemy":
                                 inhabitant.identify()
@@ -269,6 +289,9 @@ while dead == False:
                                 print(f"\n\n{inhabitant.name}, now angry, is charging towards you.")
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
+=======
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
 =======
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
@@ -281,6 +304,7 @@ while dead == False:
                                 elif fight_outcome == False:
                                         print("\nYou have been defeated.  GAME OVER")
                                         dead = True
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -304,6 +328,8 @@ while dead == False:
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
 =======
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
+=======
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
                         else:
                                 inhabitant.insult()  
 
@@ -316,6 +342,7 @@ while dead == False:
 
         elif command.startswith("take") is True:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
                         else:
@@ -354,6 +381,31 @@ while dead == False:
 
                 object_looked_at = command[8:]  # Everything after "look at " is grabbed
 
+=======
+                if items_in_room is not None:
+                        item_taken = command[5:]  # This grabs the text after "take " to check l
+                        if item_taken in items_in_room:
+                                if items_in_room[item_taken].can_put_in_inventory == True:
+                                        print(f"You add {item_taken} to your inventory.") 
+                                        inventory[item_taken] = items_in_room[item_taken]  #  Adds item to inventory
+                                        current_room.remove_item(item_taken)
+                                        #items_in_room.pop(item_taken)  # Removes item from that room's dict.
+                                else:
+                                        print("You are unable to add that item to your inventory.")
+
+                        elif item_taken in inventory:
+                                print("You've already added that to your inventory.")
+                        else:
+                                 print(f"I'm not sure that I see '{item_taken}' in here.  What would you like to take?")
+
+                elif items_in_room is None:
+                        print("There is nothing in the room to take")
+
+        elif command.startswith("look at") is True:
+
+                object_looked_at = command[8:]  # Everything after "look at " is grabbed
+
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
                 # Items are placed in different dicts depending on if they're in your inentory or still in the room.
                 # This if else statement prints the descriptions for these items.
                 if object_looked_at in items_in_room:
@@ -369,6 +421,7 @@ while dead == False:
                         
                 else:
                         print(f"I'm not sure that I see '{object_looked_at}'.  What would you like to look at?")
+<<<<<<< HEAD
 
 =======
                 if items_in_room is not None:
@@ -409,6 +462,9 @@ while dead == False:
                         
                 else:
                         print(f"I'm not sure that I see '{object_looked_at}'.  What would you like to look at?")
+
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
+=======
 
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
         else: 

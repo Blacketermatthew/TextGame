@@ -52,6 +52,7 @@ while dead == False:
         items_in_room = current_room.get_all_items_in_room()
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if inhabitant is not None:
 <<<<<<< HEAD
                         inhabitant.describe()
@@ -90,9 +91,18 @@ while dead == False:
         command = (input("> ").lower().rstrip())
         print("\n\n\n\n===============================================================================\n")
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
+=======
+        if inhabitant is not None:
+                inhabitant.describe()
+
+        print("\n\nCommands available: [ Greet | Insult | Identify | Fight | Look At ___ | Take ___ | Inventory ]")
+        command = (input("> ").lower().rstrip())
+        print("\n\n\n\n===============================================================================\n")
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
 
 =======
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 >>>>>>> 4f2bc797305e7db984bcec48866bd51f79be5c21
@@ -106,14 +116,43 @@ while dead == False:
 <<<<<<< HEAD
 <<<<<<< HEAD
                 elif command == "greet": 
+=======
+        if command in ["north", "south", "east", "west"]:
 
-                        if inhabitant is not None:
-                                inhabitant.greet()
-                        elif inhabitant is None:
-                                print("There is nobody here to talk to.")
+                current_room = current_room.move(command)
 
-                elif command == "fight":
+        elif command == "greet": 
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
 
+                if inhabitant is not None:
+                        inhabitant.greet()
+                elif inhabitant is None:
+                        print("There is nobody here to talk to.")
+
+        elif command == "fight":
+
+                if inhabitant is not None and isinstance(inhabitant, Enemy):
+                        you.check_inventory()
+                        fight_with = input("\n\nWhat will you fight with? : ")
+                        fight_outcome = inhabitant.fight(fight_with)
+                        if fight_outcome == True:
+                                current_room.set_character(None)
+                        elif fight_outcome == False:
+                                print("\nYou have been defeated.  GAME OVER")
+                                dead = True
+
+                elif inhabitant is not None and isinstance(inhabitant, Character):
+                        inhabitant.fight(None)
+
+                elif inhabitant is None:
+                        print("There is nobody here to fight.")
+
+                else:
+                        print("You are currently unable to fight anybody.")
+                
+        elif command == "identify":
+
+<<<<<<< HEAD
                         if inhabitant is not None and isinstance(inhabitant, Enemy):
 =======
 <<<<<<< HEAD
@@ -164,6 +203,8 @@ while dead == False:
 >>>>>>> 3d331e8a80de676cf544c72e1f338621156f5ec1
 >>>>>>> 4f2bc797305e7db984bcec48866bd51f79be5c21
 =======
+=======
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
                 if inhabitant is not None:
                         if inhabitant.__class__.__name__ == "Enemy":
                                 inhabitant.identify()
@@ -183,6 +224,9 @@ while dead == False:
                         if inhabitant.insult_count >= 2:
                                 you.check_inventory()
                                 print(f"\n\n{inhabitant.name}, now angry, is charging towards you.")
+<<<<<<< HEAD
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
+=======
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
                                 fight_with = input("What will you fight with? : ")
                                 fight_outcome = inhabitant.fight(fight_with)
@@ -191,6 +235,7 @@ while dead == False:
                                 elif fight_outcome == False:
                                         print("\nYou have been defeated.  GAME OVER")
                                         dead = True
+<<<<<<< HEAD
 <<<<<<< HEAD
                         else:
                                 inhabitant.insult()  
@@ -222,6 +267,20 @@ while dead == False:
 
         elif command.startswith("take") is True:
 
+=======
+                        else:
+                                inhabitant.insult()  
+
+                elif inhabitant is None:
+                        print("There is nobody here to insult.")
+
+        elif command == "inventory":
+
+                you.check_inventory()
+
+        elif command.startswith("take") is True:
+
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
                 if items_in_room is not None:
                         item_taken = command[5:]  # This grabs the text after "take " to check l
                         if item_taken in items_in_room:

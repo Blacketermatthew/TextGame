@@ -110,6 +110,7 @@ rm.dining_hall.place_item(matches)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 keys = Item("keys")
@@ -124,6 +125,16 @@ keys.set_description("Three keys held together by a rusty keyring.")
 rm.dining_hall_to_garage_hallway.place_item(keys)
 >>>>>>> parent of 3d331e8 (Added win condition for keys)
 
+
+# Garage
+
+### NEED TO MAKE WORKBENCH
+=======
+keys = Item("keys")
+keys.set_description("Three keys held together by a rusty keyring.")
+rm.dining_hall_to_garage_hallway.place_item(keys)
+
+>>>>>>> parent of 3d331e8 (Added win condition for keys)
 
 # Garage
 

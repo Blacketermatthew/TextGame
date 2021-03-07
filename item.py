@@ -107,55 +107,10 @@ rm.dining_hall.place_item(matches)
 
 # Dining hall to garage hallway
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-keys = Item("keys")
-keys.set_description("Three keys held together by a rusty keyring.")
-rm.dining_hall_to_garage_hallway.place_item(keys)
-=======
->>>>>>> 3d331e8a80de676cf544c72e1f338621156f5ec1
->>>>>>> 4f2bc797305e7db984bcec48866bd51f79be5c21
-=======
-keys = Item("keys")
-keys.set_description("Three keys held together by a rusty keyring.")
-rm.dining_hall_to_garage_hallway.place_item(keys)
->>>>>>> parent of 3d331e8 (Added win condition for keys)
-
-
-# Garage
-
-### NEED TO MAKE WORKBENCH
-=======
 keys = Item("keys")
 keys.set_description("Three keys held together by a rusty keyring.")
 rm.dining_hall_to_garage_hallway.place_item(keys)
 
->>>>>>> parent of 3d331e8 (Added win condition for keys)
-
-# Garage
-
-### NEED TO MAKE WORKBENCH
-=======
-keys = Item("keys")
-keys.set_description("Three keys held together by a rusty keyring.")
-rm.dining_hall_to_garage_hallway.place_item(keys)
-
->>>>>>> parent of 3d331e8 (Added win condition for keys)
-
-# Garage
-
-### NEED TO MAKE WORKBENCH
-=======
-keys = Item("keys")
-keys.set_description("Three keys held together by a rusty keyring.")
-rm.dining_hall_to_garage_hallway.place_item(keys)
-
->>>>>>> parent of 3d331e8 (Added win condition for keys)
 
 # Garage
 

@@ -93,13 +93,6 @@ class Enemy(Character):
     def fight(self, combat_item):
         self.insult_count = 2
         return super(Enemy, self).fight(combat_item)  # This uses the same fight method from Character.  A fight will immediately start now (insult count = 3)
-
-        # if combat_item == self.weakness and combat_item in you.inventory:
-        #     print("You fend " + self.name + " off with the " + combat_item)
-        #     return True
-        # else:
-        #     print(self.name + " crushes you like the nerd you are")
-        #     return False
     
 ### ------------------------------------------------------ ###
 

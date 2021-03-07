@@ -114,7 +114,16 @@ rm.dining_hall_to_garage_hallway.place_item(keys)
 
 # Garage
 
-### NEED TO MAKE WORKBENCH
+workbench = Furniture("workbench")
+workbench.set_description("A large, metallic red table with all kinds of tools scattered on it.\n"
+    "Your toolbox looks to have been pried open.")
+rm.garage.place_item(workbench)
+
+toolbox = Furniture("toolbox")
+toolbox.set_description("A giant toolbox with the front locks bent beyond recognition.  \n"
+    "Everything's gone from it, but there's...slobber inside?   Did something...EAT all the tools?")
+rm.garage.place_item(toolbox)
+
 
 # Study
 
@@ -142,7 +151,7 @@ key_hooks.set_description("Four shiny, metal hooks.  You often forget these even
 rm.foyer.place_item(key_hooks)
 
 blue_key = Item("blue key")
-blue_key.set_description("A cobalt-colored house key.")
+blue_key.set_description("A cobalt-colored house key.  Very cool.")
 rm.foyer.place_item(blue_key)
 
 
@@ -155,3 +164,4 @@ rm.upstairs_hallway.place_item(poster)
 yellow_key = Item("yellow key")
 yellow_key.set_description("A sunflower-colored house key.  You don't even own any sunflower-colored items this could belong to.")
 rm.upstairs_hallway.place_item(yellow_key)
+

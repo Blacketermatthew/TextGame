@@ -150,6 +150,10 @@ key_hooks.set_description("Four shiny, metal hooks.  You often forget these even
     "A blue key you've never seen before is hanging from one of the hooks.")
 rm.foyer.place_item(key_hooks)
 
+coat_rack = Furniture("coat rack")
+coat_rack.set_description("Basically an expensive dead tree you keep indoors so you can hang stuff off of.  You don't even wear coats.")
+rm.foyer.place_item(coat_rack)
+
 blue_key = Item("blue key")
 blue_key.set_description("A cobalt-colored house key.  Very cool.")
 rm.foyer.place_item(blue_key)

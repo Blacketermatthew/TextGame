@@ -81,9 +81,7 @@ while dead == False:
                 elif command == "fight":
 
                         if inhabitant is not None and isinstance(inhabitant, Enemy):
-                                you.check_inventory()
-                                fight_with = input("\n\nWhat will you fight with? : ")
-                                fight_outcome = inhabitant.fight(fight_with)
+                                fight_outcome = inhabitant.fight()
                                 if fight_outcome == True:
                                         current_room.set_character(None)
                                 elif fight_outcome == False:
@@ -91,13 +89,10 @@ while dead == False:
                                         dead = True
 
                         elif inhabitant is not None and isinstance(inhabitant, Character):
-                                inhabitant.fight(None)
+                                inhabitant.fight()
 
                         elif inhabitant is None:
                                 print("There is nobody here to fight.")
-
-                        else:
-                                print("You are currently unable to fight anybody.")
                         
                 elif command == "identify":
 
@@ -114,25 +109,13 @@ while dead == False:
 
                         # If you insult somebody 3+ times, they'll attack you.  Insulting an enemy once will cause them to immediately attack you.
                         if inhabitant is not None:
-                                if isinstance(inhabitant, Enemy):
-                                        print(inhabitant.name + ", now angry, is charging towards you.\n")
-                                        you.check_inventory()
-                                        fight_with = input("\nWhat will you fight with? : ")
-                                        fight_outcome = inhabitant.fight(fight_with)
-                                        if fight_outcome == True:
-                                                current_room.set_character(None)
-                                        elif fight_outcome == False:
-                                                print("\nYou have been defeated.  GAME OVER")
-                                                dead = True
+                                
+                                if inhabitant.insult_count < 2 and isinstance(inhabitant, Character):
+                                        inhabitant.insult()   
 
-                                elif inhabitant.insult_count < 2:
-                                        inhabitant.insult()    
-
-                                elif inhabitant.insult_count >= 2:
+                                elif inhabitant.insult_count >= 2 or isinstance(inhabitant, Enemy):
                                         print(inhabitant.name + ", now angry, is charging towards you.\n")
-                                        you.check_inventory()
-                                        fight_with = input("\nWhat will you fight with? : ")
-                                        fight_outcome = inhabitant.fight(fight_with)
+                                        fight_outcome = inhabitant.fight()
                                         if fight_outcome == True:
                                                 current_room.set_character(None)
                                         elif fight_outcome == False:

@@ -169,3 +169,13 @@ yellow_key = Item("yellow key")
 yellow_key.set_description("A sunflower-colored house key.  You don't even own any sunflower-colored items this could belong to.")
 rm.upstairs_hallway.place_item(yellow_key)
 
+# Bedroom
+trunk = Furniture("trunk")
+trunk.set_description("A small trunk that's used to store random junk.  It looks to be radiating heat.  It usually doesn't do that.\n"
+    "You slowly open the trunk using an old shirt like an oven mitt and see a flaming sword.")
+rm.bedroom.place_item(trunk)
+
+flaming_sword = Weapon("flaming sword", 100)
+flaming_sword.set_description("A sword, but on fire.  How was it not burning the trunk?")
+rm.bedroom.place_item(flaming_sword)
+

@@ -86,6 +86,9 @@ study = Room("Study")
 study.set_description("Your safe space.  The old, beat-up couch in here has seen better days. Haven't we all.\n"
     "It looks like all your stuff on your desk has been moved around or knocked over.")
 
+bedroom = Room("Bedroom")
+bedroom.set_description("Where insomnia crushes any dreams you have of getting sleep.  The trunk at the foot of your bed has... steam? coming out of it.")
+
 upstairs_hallway = Room("Upstairs hallway")
 upstairs_hallway.set_description("A small hallway with white walls and a surprisingly high amount of warm, natural light coming from downstairs.\n"
     "A cat's paradise, they'd say.  There's an old framed poster that's fallen off the wall and onto the floor.")
@@ -101,12 +104,13 @@ garage.set_description("Mostly used for storage.  If you pushed all the random j
 ### Mapping Out the Rooms. ###
 
 ## link_room() connects one room to another room in the direction of wherever the parameter room is.  Room must first be declared as a Room() object
-kitchen.link_room(dining_hall, "south") ## Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
 
-dining_hall.link_room(kitchen, "north")
+dining_hall.link_room(kitchen, "north")  ## Makes the dining hall south of the kitchen, just as the next line places and connects it to the north
 dining_hall.link_room(foyer, "south")
 dining_hall.link_room(dining_hall_to_garage_hallway, "west")
 dining_hall.link_room(study, "east")
+
+kitchen.link_room(dining_hall, "south")
 
 study.link_room(dining_hall, "west")
 
@@ -114,6 +118,9 @@ foyer.link_room(dining_hall, "north")
 foyer.link_room(upstairs_hallway, "east")
 
 upstairs_hallway.link_room(foyer, "west")
+upstairs_hallway.link_room(bedroom, "east")
+
+bedroom.link_room(upstairs_hallway, "west")
 
 dining_hall_to_garage_hallway.link_room(dining_hall, "east")
 dining_hall_to_garage_hallway.link_room(garage, "west")

@@ -107,26 +107,23 @@ rm.dining_hall.place_item(matches)
 
 # Dining hall to garage hallway
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 keys = Item("keys")
 keys.set_description("Three keys held together by a rusty keyring.")
 rm.dining_hall_to_garage_hallway.place_item(keys)
-=======
->>>>>>> 3d331e8a80de676cf544c72e1f338621156f5ec1
->>>>>>> 4f2bc797305e7db984bcec48866bd51f79be5c21
-=======
-keys = Item("keys")
-keys.set_description("Three keys held together by a rusty keyring.")
-rm.dining_hall_to_garage_hallway.place_item(keys)
->>>>>>> parent of 3d331e8 (Added win condition for keys)
 
 
 # Garage
 
-### NEED TO MAKE WORKBENCH
+workbench = Furniture("workbench")
+workbench.set_description("A large, metallic red table with all kinds of tools scattered on it.\n"
+    "Your toolbox looks to have been pried open.")
+rm.garage.place_item(workbench)
+
+toolbox = Furniture("toolbox")
+toolbox.set_description("A giant toolbox with the front locks bent beyond recognition.  \n"
+    "Everything's gone from it, but there's...slobber inside?   Did something...EAT all the tools?")
+rm.garage.place_item(toolbox)
+
 
 # Study
 
@@ -153,8 +150,12 @@ key_hooks.set_description("Four shiny, metal hooks.  You often forget these even
     "A blue key you've never seen before is hanging from one of the hooks.")
 rm.foyer.place_item(key_hooks)
 
+coat_rack = Furniture("coat rack")
+coat_rack.set_description("Basically an expensive dead tree you keep indoors so you can hang stuff off of.  You don't even wear coats.")
+rm.foyer.place_item(coat_rack)
+
 blue_key = Item("blue key")
-blue_key.set_description("A cobalt-colored house key.")
+blue_key.set_description("A cobalt-colored house key.  Very cool.")
 rm.foyer.place_item(blue_key)
 
 
@@ -167,3 +168,14 @@ rm.upstairs_hallway.place_item(poster)
 yellow_key = Item("yellow key")
 yellow_key.set_description("A sunflower-colored house key.  You don't even own any sunflower-colored items this could belong to.")
 rm.upstairs_hallway.place_item(yellow_key)
+
+# Bedroom
+trunk = Furniture("trunk")
+trunk.set_description("A small trunk that's used to store random junk.  It looks to be radiating heat.  It usually doesn't do that.\n"
+    "You slowly open the trunk using an old shirt like an oven mitt and see a flaming sword.")
+rm.bedroom.place_item(trunk)
+
+flaming_sword = Weapon("flaming sword", 100)
+flaming_sword.set_description("A sword, but on fire.  How was it not burning the trunk?")
+rm.bedroom.place_item(flaming_sword)
+

@@ -41,21 +41,26 @@ class Character():
             print("They just stare at you.")
     
     # Fight with this character
-    def fight(self, combat_item):
+    def fight(self):
         self.previously_encountered = True
-        if self.insult_count >= 2:
-            if combat_item == self.weakness:
-                if combat_item in you.inventory:
-                    print("You fend " + self.name + " off with the " + combat_item)
-                    return True
-                print(f"You don't have that item in your inventory.  You were defenseless against {self.name}.")
-                return False
-            else:
-                print(self.name + " crushes you like the nerd you are")
-                return False
-        else:
+
+        if self.insult_count < 2:
             print(self.name + " doesn't want to fight you.")
-        
+
+        elif self.insult_count >= 2 or isinstance(self, Enemy):
+                you.check_inventory()
+                combat_item = input("\n\nWhat will you fight with? : ")
+                if combat_item == self.weakness:
+                    if combat_item in you.inventory:
+                        print("You fend " + self.name + " off with the " + combat_item)
+                        return True
+                    else:
+                        print(f"You don't have that item in your inventory.  You were defenseless against {self.name}.")
+                        return False
+                else:
+                    print(self.name + " crushes you like the nerd you are")
+                    return False
+
     # Insult this character
     def insult(self):
         self.previously_encountered = True
@@ -80,6 +85,7 @@ class Character():
 class Enemy(Character):
     def __init__(self, char_name, char_description):
         super().__init__(char_name, char_description)
+        self.insult_count = 2
 
     def get_weakness(self):
         return self.weakness
@@ -89,17 +95,6 @@ class Enemy(Character):
         print("[" + self.name + "]")
         print(self.description)
         print("[Weakness: " + self.weakness + "]")
-
-    def fight(self, combat_item):
-        self.insult_count = 2
-        return super(Enemy, self).fight(combat_item)  # This uses the same fight method from Character.  A fight will immediately start now (insult count = 3)
-
-        # if combat_item == self.weakness and combat_item in you.inventory:
-        #     print("You fend " + self.name + " off with the " + combat_item)
-        #     return True
-        # else:
-        #     print(self.name + " crushes you like the nerd you are")
-        #     return False
     
 ### ------------------------------------------------------ ###
 
@@ -113,4 +108,3 @@ rm.dining_hall.set_character(dave)
 gorgo = Enemy("Gorgo", "A bulbous, gurgling bipedal creature with six bony arms.  Smells like trash.")
 gorgo.set_weakness("flaming sword")
 rm.garage.set_character(gorgo)
-

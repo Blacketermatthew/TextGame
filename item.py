@@ -12,9 +12,6 @@ class Item():
     def __str__(self):
         return 'Item %s - %s' % (self.name, self.description)
     
-    # def set_name(self, item_name):
-    #     self.name = item_name
-
     def get_name(self):
         return self.name
 
@@ -49,7 +46,6 @@ class Furniture(Item):
             
             player.you.money_in_hand += self.money_contained
             self.money_contained = 0 # Removes the money from the item so you can't continuously spawn cash.
-            #print(f"Total cash: ${player.you.money_in_hand}") 
 
         else:
             pass

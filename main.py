@@ -6,26 +6,6 @@ from item import Item, Furniture, Weapon, red_key, blue_key, yellow_key
 from character import Character, Enemy
 from rpginfo import RPGInfo
 
-## ------- TO DO LIST -------------- ##
-"""
-- Create stats for characters and items?
-- Dialogue tree?
-- modify fight and insult
-
-"""
-## --------------------------------- ##
-
-
-
-### Room Creation ###
-
-### Mapping Out the Rooms. ###
-
-### Creating the Characters and Enemies ###
-
-### Creating and Placing Items ###
-
-
 
 ###############################################################
 ################### MAIN GAME #################################
@@ -33,7 +13,6 @@ from rpginfo import RPGInfo
 
 ### Game Variable Setup ###
 current_room = rm.study  ## Where you start off.
-#player = Player()
 inventory = you.inventory  # This is an empty list in Item that will have taken items appended to, so it follows them between rooms.
 
 dead = False  ## Gets turned True once you die
@@ -113,7 +92,7 @@ while dead == False:
                                 if inhabitant.insult_count < 2 and isinstance(inhabitant, Character):
                                         inhabitant.insult()   
 
-                                elif inhabitant.insult_count >= 2 or isinstance(inhabitant, Enemy):
+                                elif inhabitant.insult_count > 2 or isinstance(inhabitant, Enemy):
                                         print(inhabitant.name + ", now angry, is charging towards you.\n")
                                         fight_outcome = inhabitant.fight()
                                         if fight_outcome == True:

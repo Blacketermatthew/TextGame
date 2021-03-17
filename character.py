@@ -45,7 +45,10 @@ class Character():
         self.previously_encountered = True
 
         if self.insult_count < 2:
-            print(self.name + " doesn't want to fight you.")
+            if isinstance(self, Character):
+                print(self.name + " doesn't want to fight you.")
+            else:
+                pass
 
         elif self.insult_count >= 2 or isinstance(self, Enemy):
                 you.check_inventory()
@@ -65,6 +68,9 @@ class Character():
     def insult(self):
         self.previously_encountered = True
         self.insult_count += 1
+        if self.insult_count >=2:
+            self.__class__ = Enemy
+        
         insult_responses = { 
             0: "HEY.  Take it easy, pal.", 
             1: "Back off.  I'm warning you.", 
@@ -78,7 +84,6 @@ class Character():
             9: "As if I didn't already suffer from enough self-esteem issues."
             }
 
-        print(f"Insult count: {self.insult_count}")
         print("[You insult " + self.name + "]")
         print("[" + self.name + " says]: " + insult_responses[randint(0,9)])   
 

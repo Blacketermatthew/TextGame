@@ -12,8 +12,6 @@ class Player():
         print("-----INVENTORY-----")
         print(f"Cash: ${self.money_in_hand}")
         for item in self.inventory:
-            print(item)
-            #print(self.inventory[item].describe())
-        
+            print(item)        
 
 you = Player()

@@ -1,8 +1,6 @@
-#import player
 from player import you
 import room as rm
 from item import Item, Furniture, Weapon, red_key, blue_key, yellow_key
-#import character as char
 from character import Character, Enemy
 from rpginfo import RPGInfo
 

@@ -1,10 +1,10 @@
 #import player
-from player import you
-import room as rm
-from item import Item, Furniture, Weapon, red_key, blue_key, yellow_key
+from game_data.player import you
+import game_data.room as rm
+from game_data.item import Item, Furniture, Weapon, red_key, blue_key, yellow_key
 #import character as char
-from character import Character, Enemy
-from rpginfo import RPGInfo
+from game_data.character import Character, Enemy
+from game_data.rpginfo import RPGInfo
 
 
 ###############################################################

@@ -1,5 +1,5 @@
-from item import Item, Weapon, Furniture
-import item 
+from game_data.item import Item, Weapon, Furniture
+import game_data.item 
 
 class Player():
 

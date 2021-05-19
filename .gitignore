@@ -1,5 +1,8 @@
- __pycache__/
- *.pyc
+__pycache__/
+*.pyc
+*.xlsx
+*.log
 
- character_test.py
+debug.log
+character_test.py
  

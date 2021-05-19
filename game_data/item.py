@@ -1,5 +1,5 @@
-import room as rm
-import player
+import game_data.room as rm
+import game_data.player
 
 
 class Item():
@@ -44,7 +44,7 @@ class Furniture(Item):
         if self.money_contained > 0:
             print(f"You found ${self.money_contained}!")
             
-            player.you.money_in_hand += self.money_contained
+            game_data.player.you.money_in_hand += self.money_contained
             self.money_contained = 0 # Removes the money from the item so you can't continuously spawn cash.
 
         else:

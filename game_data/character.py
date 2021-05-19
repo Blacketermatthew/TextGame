@@ -1,6 +1,6 @@
 from random import randint
-import room as rm
-from player import you
+import game_data.room as rm
+from game_data.player import you
 
 class Character():
 
